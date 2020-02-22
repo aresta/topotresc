@@ -90,10 +90,10 @@ docker-compose exec tools /scripts/compile_styles.sh
 ## Example
 
 Visit the Pyrenees and Catalonia Topotresc map:
-```
-https://topotresc.com/
-```
+
+[https://topotresc.com](https://topotresc.com "Topotresc")
+
 (still work in progress, not always online)
 
 ### Credits
-Leaflet | Map data © OpenStreetMap contributors, ICGC, CNIG. CC-BY-SA
+OpenStreetMap & contributors, ICGC, CNIG (among many others). CC-BY-SA
