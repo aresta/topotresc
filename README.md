@@ -1,6 +1,7 @@
 # topotresc
-This is a project to build a map server customized for mountain hiking based in the OSM data, mapnik, apache with mod_tile and the gdal tools among others and docker to avoid all the installation and dependencies problems.
-The map include layers with hillshading and elevation contour lines to to achieve an efective relief highlighting and is highly adapted for all kind of mountain activities.
+This is a project to build a map server customized for mountain hiking based in the OSM data, mapnik, apache with mod_tile and the gdal tools among others. The system is built on docker to avoid all the installation and dependencies problems.
+
+The map include layers with hillshading and elevation contour lines to to achieve an efective relief highlighting and the look-and-feel is adapted for all kind of mountain activities.
 
 
 ## Map features ##
@@ -85,3 +86,14 @@ http://localhost
 ```
 docker-compose exec tools /scripts/compile_styles.sh
 ```
+
+## Example
+
+Visit the Pyrenees and Catalonia Topotresc map:
+```
+https://topotresc.com/
+```
+(still work in progress, not always online)
+
+### Credits
+Leaflet | Map data © OpenStreetMap contributors, ICGC, CNIG. CC-BY-SA
