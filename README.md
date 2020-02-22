@@ -1,7 +1,16 @@
 # topotresc
-This is a project to build a map server customized for mountain hiking based in the OSM data, mapnik, apache with mod_tile and the gdal tools among others. The system is built on docker to avoid all the installation and dependencies problems.
+This is a project to build a map server customized for mountain hiking based in the **OpenStreetMap** (OSM) data, **mapnik**, apache with **mod_tile** and the **gdal tools** among others. The system is built on docker to avoid all the installation and dependencies problems.
 
-The map include layers with hillshading and elevation contour lines to to achieve an efective relief highlighting and the look-and-feel is adapted for all kind of mountain activities.
+The map include layers with **hillshading** and **elevation contour lines** to achieve an efective relief highlighting and the look-and-feel is adapted for all kind of mountain activities.
+
+![Sant Maurici](docs/img/st_maurici.jpg) 
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
 
 ## Map features ##
@@ -18,6 +27,10 @@ OSM data offers the possibility to distinguish hiking trails suitable for all (T
 Trails visibility describes attributes regarding trail visibility (not route visibility) and orientation. OSM data makes the distinction between trail visibility and trail difficulty using two different tags. 
 
 Rendering all the different combinations of difficulty and visibility can be confusing for the map user so a sensible approach has been taken to distinguish about six combinations based on the most common hiker profiles.
+
+![Paths difficulty and visibility](docs/img/paths.jpg)
+
+Here we can see diferent combinations of rendering for difficulty (red=easy, darker=difficult) and visibility (more dotted/smaller=less visible)
 
 
 
@@ -87,13 +100,19 @@ http://localhost
 docker-compose exec tools /scripts/compile_styles.sh
 ```
 
-## Example
+## Examples
 
 Visit the Pyrenees and Catalonia Topotresc map:
 
-[https://topotresc.com](https://topotresc.com "Topotresc")
+[Mapa del Pirineo](https://topotresc.com "Mapa dels Pirineus i Catalunya")
 
 (still work in progress, not always online)
+
+![Sant Maurici](docs/img/st_maurici_low_zoom.jpg) 
+![Montcau](docs/img/montcau.jpg) 
+![Sant Maurici](docs/img/st_maurici_low_zoom.jpg) 
+![Medium zoom](docs/img/medium_zoom.jpg) 
+![Low zoom](docs/img/low_zoom.jpg) 
 
 ### Credits
 OpenStreetMap & contributors, ICGC, CNIG (among many others). CC-BY-SA
