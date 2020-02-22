@@ -31,12 +31,13 @@ Here we can see diferent combinations of rendering for difficulty (red=easy, dar
 
 
 
+
 ## Quick start
 
 ### Prerequisites
 
 - Install docker and docker-composer.
-- Tested in mac. For linux and windows should be no problem.  
+- Tested in mac. For linux and windows should work fine with minor adjustments.  
 
 
 ### Clone the project, build the docker images and the project
@@ -52,7 +53,7 @@ docker-compose build
 - Download the DEM (digital elevation model) files of the map area. 
 
 This is needed to create the contour lines and hillshading.  For the Picos area (or any other in Spain) you can download them here: http://centrodedescargas.cnig.es/CentroDescargas/index.jsp (MDT05 is ok, 5x5m). Put them in the folder mnt/dem/es/  
-For example, for the Picos area the files area:
+For example, for the Picos area the files are:
 ```
 PNOA_MDT05_ETRS89_HU30_0031_LID.asc
 PNOA_MDT05_ETRS89_HU30_0032_LID.asc
@@ -67,16 +68,16 @@ PNOA_MDT05_ETRS89_HU30_0081_LID.asc
 ```
 docker-compose up
 ```
-Check posible error.  If everything is fine later you can also execute the command with the -d flag to make the containers run in backgrund, but now is better to able to see the errors.
+Check posible errors.  If everything is fine later you can also execute the command with the -d flag to make the containers run in backgrund, but now is better to be able to see the posible errors in the next steps.
 
 
 - Build
 
-Open a second terminal, navigate to the project folder and execute the scrip:
+Open a second terminal, navigate to the project folder and execute the script:
 ```
 ./build_all.sh
 ```
-This can take a long time and generate a lot of GBs, depending on the area.  For the small picos area provided it is about 6GB and 30' downloading and building on a desktop computer.
+This can take a long time and generate a lot of GBs, depending on the area.  For the small picos area provided it is about 6GB and 30' downloading and building on a regular desktop computer.
 
 *Note*: For windows you should only adapt the two script in the root, renaming them to .bat could be enought.  The other scripts are ok because they are executed inside the docker containers.
 
@@ -90,9 +91,9 @@ http://localhost
 
 ## Customize the map to another area
 
-- One geojson file with the boundaries of the map is included (mnt/conf/picos.geojson), it covers the Picos de Europa mountains in Spain. If you want to render another area, you have to create a new geojson with the limits of your map. It doesn't need to be a rectangle.
+- One geojson file with the boundaries of the map is included (mnt/conf/picos.geojson), it covers the *Picos de Europa* mountains in Spain. If you want to render another area, you have to create a new geojson file with the limits of your map. It doesn't need to be a rectangle.
 - If the area is not in Spain you have to download the PBF from that area and find the DEMs somewhere else.
-- Probably you will need to adjust the initial coordinates to show the map in the index.js file.
+- You will also need to adjust the initial coordinates to show the map in the index.js file.
 - If you want to adapt the styles (good luck) they are in mnt/openstreetmap-carto. You can compile them with:
 ```
 docker-compose exec tools /scripts/compile_styles.sh
