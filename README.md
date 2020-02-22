@@ -3,8 +3,10 @@ This is a project to build a map server customized for mountain hiking based in 
 
 The map include layers with **hillshading** and **elevation contour lines** to achieve an efective relief highlighting and the look-and-feel is adapted for all kind of mountain activities.
 
-![Sant Maurici](docs/img/st_maurici.jpg) 
 
+|             |     |
+:-------------------------:|:-------------------------:|
+|![Sant Maurici](docs/img/st_maurici.jpg)   |  ![Los Infiernos](docs/img/infiernos.jpg)  |
 
 
 
@@ -103,8 +105,10 @@ Visit the Pyrenees and Catalonia Topotresc map:
 
 (still work in progress, not always online)
 
-![Sant Maurici](docs/img/st_maurici_low_zoom.jpg) ![Montcau](docs/img/montcau.jpg) 
-![Medium zoom](docs/img/medium_zoom.jpg) ![Low zoom](docs/img/low_zoom.jpg) 
+|             |     |
+:-------------------------:|:-------------------------:|
+|![Sant Maurici](docs/img/st_maurici_low_zoom.jpg)  |  ![Montcau](docs/img/montcau.jpg)  |
+|![Medium zoom](docs/img/medium_zoom.jpg)  |  ![Low zoom](docs/img/low_zoom.jpg)   |
 
 ### Credits
 OpenStreetMap & contributors, ICGC, CNIG (among many others). CC-BY-SA
