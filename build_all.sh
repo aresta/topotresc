@@ -1,3 +1,10 @@
+# create additional folders (github doesn't track empty folders)
+mkdir -p \
+    mnt/base_data \
+    mnt/contours \
+    mnt/shades \
+    mnt/pbf \
+    mnt/dem/es
 
 echo "Download SHPs of the coasts..."
 docker-compose exec tools /scripts/download_shapefiles.sh
@@ -15,7 +22,7 @@ docker-compose exec tools /scripts/import_pbf.sh
 docker-compose exec postgres /scripts/import_contours.sh
 
 # compile the styles, only needed if you change them
-docker-compose exec tools /scripts/compile_styles.sh
+#docker-compose exec tools /scripts/compile_styles.sh
 
 # here we go
 ./start_web_server.sh
