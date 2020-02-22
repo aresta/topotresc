@@ -1,0 +1,8 @@
+mnt/base_data/**
+mnt/contours/**
+mnt/shades/**
+mnt/pbf/**
+mnt/dem/es
+postgres/data
+tileserver/tiles/default
+tileserver/site/node_modules

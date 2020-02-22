@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Topotresc</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <link href="static/css/all.min.css" rel="stylesheet"> <!-- fontawesome --> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css"> <!-- easybutton -->
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+ <div id="map">
+    <div id="menu" class="menu-bar hidden">
+        <a href="#" id="track">Track</a>
+        <a href="#" data-panel="dreceres">Dreceres</a>
+        <a href="#" data-panel="info">Info</a>
+    </div>
+</div>
+
+<div id="info" class="menu-panel hidden">
+    <p>Topotresc es un servei de mapes orientat a senderisme i altres activitats a la muntanya. Cobreix per ara tot el Pirineu i Catalunya. 
+        Està creat a partir de les excel.lents dades geogràfiques del projecte <a href="https://www.openstreetmap.org" target="_blank">OpenStreetmap</a>.</p>
+    <p> Al mapa estan especialment detallats els elements relatius al muntanyisme, com ara els senders amb diversos nivells de dificultat, els refugis, les fonts, els GR, PR, SL, llacs, glaceres, etc.</p>
+    <p>Les corves de nivell d'alta resolució i l'ombrejat del relleu han estat generats a partir les dades d'elevació del <a href="http://www.icgc.cat" target="_blank">ICGC</a> 
+        i el <a href="https://www.cnig.es" target="_blank">CNIG</a>.</p>
+    <p>Si trobes a faltar algún camí, font, refugi o qualsevol altra element, pots col.laborar a completar la informació al projecte <a href="https://www.openstreetmap.org" target="_blank">OpenStreetmap</a>.
+        És molt senzill i podràs participar a una comunitat mundial de voluntaris que mantenen la informació geografica de totes les ciutats i muntanyes del món de forma voluntaria i oberta a tothom 
+        per fer posible projectes com aquest i molts d'altres. Totes les dades estàn disponibles amb llicència <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons</a>.</p>
+    <p>Qualsevol sugeriment serà sempre benvingut!</p>
+    <!-- <p>Topotresc is a map service based in the <a href="https://www.openstreetmap.org" target="_blank">OpenStreetmap</a> data, rendered together with high resolution contour curves and hill shadowing out of the elevation data from ICC and IGN. </p>
+    <p>The map covers the complete Pyrenees (Spanish and French side) and the full Catalonia.</p>
+    <p>If you find some missing or wrong data you can just complete it in the <a href="https://www.openstreetmap.org" target="_blank">OpenStreetmap</a> web site.  
+        It is very easy and you will collaborate with a huge comunity of mapping volunteers all other the world.</p>
+    <p>Regarding the map service or rendering, any suggestion will be welcome!</p> -->
+</div>
+
+<div id="dreceres" class="menu-panel hidden">
+    <a href="#" data-latlon="[42.82, -0.28]" data-zoom="14"> Balaitús </a> <br/>
+    <a href="#" data-latlon="[41.595, 1.82]" data-zoom="15"> Montserrat </a> <br/>
+    <a href="#" data-latlon="[42.39, 2.17]" data-zoom="14"> Núria </a> <br/>
+    <a href="#" data-latlon="[42.66, -0.02]" data-zoom="14"> Ordesa </a> <br/>
+    <a href="#" data-latlon="[41.645, 2.02]" data-zoom="15"> Sant Llorenç de Munt </a> <br/>
+</div>
+
+ <script defer src="static/all.min.js"></script>
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+ <script src="static/Leaflet.AccuratePosition.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+ <script src="https://unpkg.com/togeojson@0.16.0"></script>
+ <script src="static/leaflet.filelayer.js"></script>
+ <script src="index.js"></script>
+</body>
+</html>

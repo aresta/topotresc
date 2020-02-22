@@ -1,0 +1,99 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+#map {
+    position: relative;
+}
+
+.pos-icon{
+    font-size: 1.6em;
+} 
+.easy-button-button {
+    padding-top: 3px;
+    padding-left: 6px;
+}
+
+#menu span {
+    background-color: #ccc;
+    border: solid 2px #88c;
+    margin: 2px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+/* Menu bar */
+.menu-bar {
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    border: 2px solid rgba(0,0,0,0.2);
+    height: 30px;
+    background-clip: padding-box;
+    border-radius: 4px;
+    background-color: #aaa; 
+    overflow: auto; /* Overflow due to float */
+    z-index: 5000;
+    transition: 0.6s ease-out;
+}
+
+.menu-bar a {
+    height: 28px;
+    line-height: 28px;
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    padding: 0 5px; /* Some top and bottom padding */
+    margin: 1px 2px;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: rgb(17, 17, 17);
+    background-color: white;
+    font-size: 14px; /* Increased font size */
+}
+
+.menu-bar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+/* Panels */
+.menu-panel {
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    top: 50px;
+    right: 60px;
+    max-width: 50%;
+    max-height: 80%;
+    border: 2px solid rgba(0,0,0,0.2);
+    padding: 6px;
+    background-clip: padding-box;
+    border-radius: 4px;
+    background-color: #eee; 
+    overflow: auto; /* Overflow due to float */
+    z-index: 5000;
+    transition: 0.6s ease-out;
+    font-size: 16px;
+}
+
+.menu-panel a {
+    font-weight: bold;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-out;
+  }
+

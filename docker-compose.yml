@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  tools:
+    build:
+      context: ./tools
+      dockerfile: ./Dockerfile
+    links:
+      - postgres
+    volumes:
+      - ./mnt:/mnt
+      - ./tools/scripts:/scripts
+    tty: true
+
+  postgres:
+    restart: always
+    image: mdillon/postgis:10
+    environment:
+      - POSTGRES_USER=render
+      - POSTGRES_PASSWORD=render
+      - POSTGRES_DB=renderdb
+    volumes:
+      - ./mnt:/mnt
+      - ./postgres/initdb:/docker-entrypoint-initdb.d
+      - ./postgres/scripts:/scripts
+      - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  tileserver:
+    restart: always
+    build:
+      context: ./tileserver
+      dockerfile: ./Dockerfile
+    links:
+      - postgres
+    ports:
+      - 80:80
+    tty: true
+    volumes:
+      - ./mnt:/mnt
+      - ./tileserver/tiles:/var/lib/mod_tile
+      - ./tileserver/configs/renderd.conf:/usr/local/etc/renderd.conf
+      - ./tileserver/configs/mod_tile.conf:/etc/apache2/conf-enabled/mod_tile.conf
+      - ./tileserver/site:/var/www/html
+
