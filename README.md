@@ -32,7 +32,7 @@ Here we can see diferent combinations of rendering for difficulty (red=easy, dar
 
 
 
-## Quick start
+## Getting Started
 
 ### Prerequisites
 
@@ -40,7 +40,7 @@ Here we can see diferent combinations of rendering for difficulty (red=easy, dar
 - Tested in mac. For linux and windows should work fine with minor adjustments.  
 
 
-### Clone the project, build the docker images and the project
+### Installing and building
 
 - Clone and build the docker images
 ```
@@ -48,6 +48,7 @@ git clone https://github.com/aresta/topotresc
 cd topotresc
 docker-compose build
 ```
+This includes three images: the tileserver (debian, apache, mod_tile), the postgres server and a image with many tools installed (Ubuntu, gdal, ogr, osmium...)
 
 
 - Download the DEM (digital elevation model) files of the map area. 
@@ -71,13 +72,14 @@ docker-compose up
 Check posible errors.  If everything is fine later you can also execute the command with the -d flag to make the containers run in backgrund, but now is better to be able to see the posible errors in the next steps.
 
 
-- Build
+- Download and build all the needed data
 
 Open a second terminal, navigate to the project folder and execute the script:
 ```
 ./build_all.sh
 ```
-This can take a long time and generate a lot of GBs, depending on the area.  For the small picos area provided it is about 6GB and 30' downloading and building on a regular desktop computer.
+This can take a long time and generate a lot of GBs, depending on the area.  For the small picos area provided it is about 6GB and 30' downloading and building on a regular desktop computer. 
+(*Make sure that the postgres database in the container (previuos step) is up and running*).
 
 *Note*: For windows you should only adapt the two script in the root, renaming them to .bat could be enought.  The other scripts are ok because they are executed inside the docker containers.
 
@@ -111,5 +113,5 @@ Visit the Pyrenees and Catalonia Topotresc map: [Mapa del Pirineo](https://topot
 |![Sant Maurici](docs/img/st_maurici_low_zoom.jpg)  |  ![Montcau](docs/img/montcau.jpg)  |
 |![Medium zoom](docs/img/medium_zoom.jpg)  |  ![Low zoom](docs/img/low_zoom.jpg)   |
 
-### Credits
+### Acknowledgments
 OpenStreetMap & contributors, ICGC, CNIG (among many others). CC-BY-SA
