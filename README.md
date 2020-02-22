@@ -1,14 +1,14 @@
 # topotresc
-This is project to build a map server customized for mountain hiking with docker to avoid all the installation and dependencies problems.
+This is a project to build a map server customized for mountain hiking based in the OSM data, mapnik, apache with mod_tile and the gdal tools among others and docker to avoid all the installation and dependencies problems.
+The map include layers with hillshading and elevation contour lines to to achieve an efective relief highlighting and is highly adapted for all kind of mountain activities.
 
-This based in the OSM data, mapnik, apache with mod_tile and the gdal tools among others. The docker images are running debian and ubuntu systems.
 
 ## Map features ##
 ### Relief ###
 Highlighting relief is essential for mountain hiking. This is achieved by:
 - **Elevation contours** with labels giving values (proportional to zoom levels)
-- **HillShading**
-The map include layers with hillshading and elevation contour lines to to achieve an efective relief highlighting. 
+- **HillShading** brings a strong relief impresium.
+ 
 
 ### Trails difficulty (SAC scale)
 OSM data offers the possibility to distinguish hiking trails suitable for all (T1) from those reserved to experienced and well equipped hikers (T4-T5-T6). This is a tremendous advantage over any other classical topo map.
@@ -17,6 +17,7 @@ OSM data offers the possibility to distinguish hiking trails suitable for all (T
 Trails visibility describes attributes regarding trail visibility (not route visibility) and orientation. OSM data makes the distinction between trail visibility and trail difficulty using two different tags. 
 
 Rendering all the different combinations of difficulty and visibility can be confusing for the map user so a sensible approach has been taken to distinguish about six combinations based on the most common hiker profiles.
+
 
 
 ## Quick start
