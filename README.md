@@ -6,7 +6,7 @@ The map include layers with **hillshading** and **elevation contour lines** to a
 
 |             |     |
 :-------------------------:|:-------------------------:|
-|![Sant Maurici](docs/img/st_maurici.jpg)   |  ![Los Infiernos](docs/img/infiernos.jpg)  |
+|![Sant Maurici](docs/img/st_maurici.jpg)   |  ![Balaitus](docs/img/balaitus.jpg)  |
 
 
 
@@ -92,6 +92,7 @@ http://localhost
 
 - One geojson file with the boundaries of the map is included (mnt/conf/picos.geojson), it covers the Picos de Europa mountains in Spain. If you want to render another area, you have to create a new geojson with the limits of your map. It doesn't need to be a rectangle.
 - If the area is not in Spain you have to download the PBF from that area and find the DEMs somewhere else.
+- Probably you will need to adjust the initial coordinates to show the map in the index.js file.
 - If you want to adapt the styles (good luck) they are in mnt/openstreetmap-carto. You can compile them with:
 ```
 docker-compose exec tools /scripts/compile_styles.sh
@@ -99,11 +100,10 @@ docker-compose exec tools /scripts/compile_styles.sh
 
 ## Examples
 
-Visit the Pyrenees and Catalonia Topotresc map:
-
-[Mapa del Pirineo](https://topotresc.com "Mapa dels Pirineus i Catalunya")
+Visit the Pyrenees and Catalonia Topotresc map: [Mapa del Pirineo](https://topotresc.com "Mapa dels Pirineus i Catalunya")
 
 (still work in progress, not always online)
+
 
 |             |     |
 :-------------------------:|:-------------------------:|
