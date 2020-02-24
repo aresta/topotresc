@@ -16,38 +16,38 @@
     function initMap() {
         var map, center, zoom, circle;
         var menu = document.getElementById('menu');
-        var menu_items = menu.children;
+        // var menu_items = menu.children;
 
-        // Menu & panels   
-        for( var item of menu_items){
-            if( !item.dataset.panel) continue;
-            item.onclick = function(e){
-                var panel = document.getElementById( this.dataset.panel);
-                var is_hidden = panel.classList.contains('hidden');
-                hide_all_panels();
-                if( is_hidden) toggle_hidden(panel);
-                e.stopPropagation();
-            }
-        }
-        document.getElementById('track').onclick = function(e){
-            document.querySelector('input[type="file"]').click();  // dirty solution to fire the load track action
-            e.stopPropagation();
-        }
+        // // Menu & panels   
+        // for( var item of menu_items){
+        //     if( !item.dataset.panel) continue;
+        //     item.onclick = function(e){
+        //         var panel = document.getElementById( this.dataset.panel);
+        //         var is_hidden = panel.classList.contains('hidden');
+        //         hide_all_panels();
+        //         if( is_hidden) toggle_hidden(panel);
+        //         e.stopPropagation();
+        //     }
+        // }
+        // document.getElementById('track').onclick = function(e){
+        //     document.querySelector('input[type="file"]').click();  // dirty solution to fire the load track action
+        //     e.stopPropagation();
+        // }
 
-        document.getElementById('map').onclick = function(){
-            hide_all_panels();
-            menu.classList.add("hidden");
-        }
+        // document.getElementById('map').onclick = function(){
+        //     hide_all_panels();
+        //     menu.classList.add("hidden");
+        // }
 
-        // Panel Dreceres
-        var dreceres = document.getElementById('dreceres').children;
-        for( var drec of dreceres){
-            drec.onclick = function(){
-                hide_all_panels();
-                // menu.classList.add("hidden");
-                map.flyTo( JSON.parse( this.dataset.latlon), parseInt(this.dataset.zoom));
-            }
-        }
+        // // Panel Dreceres
+        // var dreceres = document.getElementById('dreceres').children;
+        // for( var drec of dreceres){
+        //     drec.onclick = function(){
+        //         hide_all_panels();
+        //         // menu.classList.add("hidden");
+        //         map.flyTo( JSON.parse( this.dataset.latlon), parseInt(this.dataset.zoom));
+        //     }
+        // }
 
         // Get last position from localStorage 
         center = JSON.parse(localStorage.getItem('latlon')) || [43.18, -4.840];
@@ -57,27 +57,27 @@
 
         L.control.scale({imperial:false, maxWidth:150, position:'bottomright'}).addTo(map);
 
-        var track_button = L.Control.fileLayerLoad({
-            layerOptions: {
-                style: {
-                    color: 'magenta',
-                    opacity: 0.6,
-                    fillOpacity: 0.6,
-                    weight: 2,
-                    clickable: true
-                },
-            },
-            layer: L.geoJson,
-            addToMap: true,
-            fileSizeLimit: 1024,
-            formats: [
-                '.geojson',
-                '.kml',
-                '.gpx'
-            ]
-        });
-        track_button.addTo(map);
-        document.querySelector('.leaflet-control-filelayer').style.display = 'none'; // dirty solution to remove the button
+        // var track_button = L.Control.fileLayerLoad({
+        //     layerOptions: {
+        //         style: {
+        //             color: 'magenta',
+        //             opacity: 0.6,
+        //             fillOpacity: 0.6,
+        //             weight: 2,
+        //             clickable: true
+        //         },
+        //     },
+        //     layer: L.geoJson,
+        //     addToMap: true,
+        //     fileSizeLimit: 1024,
+        //     formats: [
+        //         '.geojson',
+        //         '.kml',
+        //         '.gpx'
+        //     ]
+        // });
+        // track_button.addTo(map);
+        // document.querySelector('.leaflet-control-filelayer').style.display = 'none'; // dirty solution to remove the button
 
 
         // Geolocation button
@@ -103,12 +103,12 @@
         });
         geoloc_button.addTo(map);
         
-        L.easyButton('fas fa-bars pos-icon', function(){
-                hide_all_panels()
-                toggle_hidden(menu);
-            }, 
-            { position: 'topright' }
-        ).addTo( map );
+        // L.easyButton('fas fa-bars pos-icon', function(){
+        //         hide_all_panels()
+        //         toggle_hidden(menu);
+        //     }, 
+        //     { position: 'topright' }
+        // ).addTo( map );
 
         map.on('moveend', function(){ 
             localStorage.setItem('latlon', JSON.stringify( map.getCenter()));
