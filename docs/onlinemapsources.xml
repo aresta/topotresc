@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<onlinemapsources>	
+	<onlinemapsource uid="1">
+		<name>Topotresc</name>
+		<url><![CDATA[https://api.topotresc.com/tiles/{$z}/{$x}/{$y}.png]]></url>
+		<website><![CDATA[<a href="https://www.topotresc.com/">Topotresc</a>]]></website>
+		<minzoom>7</minzoom>
+		<maxzoom>17</maxzoom>
+		<projection>MERCATORESFERICA</projection>
+		<servers></servers>
+		<httpparam name="User-Agent">{om}</httpparam>
+		<cacheable>1</cacheable>
+		<downloadable>1</downloadable>
+		<maxtilesday>0</maxtilesday>
+		<maxthreads>0</maxthreads>
+	</onlinemapsource>	
+</onlinemapsources>

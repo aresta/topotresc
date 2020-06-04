@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customMapSource>
+<name>Topotresc</name>
+<description>Pirineu i Catalunya</description>
+<minZoom>7</minZoom>
+<maxZoom>17</maxZoom>
+<url>https://api.topotresc.com/tiles/{$z}/{$x}/{$y}.png</url>
+<serverParts></serverParts>
+<bounds>-4.0,40.38,3.44,44.0</bounds>
+<topLayer>TRUE</topLayer>
+<installMessage>
+    <message>Mapa de Muntanya - Pirineu complert i Catalunya</message>
+    <termsTitle>Topotresc Websitee</termsTitle>
+    <termsHref>https://www.topotresc.com</termsHref>
+</installMessage>
+</customMapSource>
