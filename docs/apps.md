@@ -9,25 +9,25 @@ Instrucciones para configurar Topotres en:
 - [Oruxmaps](#Oruxmaps) ( Android )
 - [OsmAnd](#OsmAnd) ( Android / IOS: Iphone, IPAD... )
 - [MapPlus](#MapPlus) ( Android / IOS: Iphone, IPAD... )
-- [MOBAC, SASPlanet, QGIS](#MOBAC) ( Windows / Mac / Linux )
-- [TwoNav Land](#Land) ( Windows / Mac )
+- [MOBAC, SASPlanet, QGIS](#MOBAC,-SASPlanet,-QGIS) ( Windows / Mac / Linux )
+- [TwoNav Land](#TwoNav-Land) ( Windows / Mac )
 
 En general es posible configurar cualquier aplicación que adminta fuentes de mapa online WMS ajustando en la configuración la siguiene URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}```
 
-## [QMapShack](#QMapShack)
+## QMapShack
 Descargar el archivo TMS y copiarlo en la carpeta de mapas de QMapShack: [topotresc_cat_piri.tms](topotresc_cat_piri.tms)
 
 Mas detalles en https://github.com/Maproom/qmapshack/wiki/DocQuickStartSpanish  *Configurar carpetas de mapas*
 
 
-## [Gurumaps](#Gurumaps)
+## Gurumaps
 Cargar en la aplicación el siguiente archivo XML: [topotresc_cat_piri.xml](topotresc_cat_piri.xml)
 
 Para enviar o cargar el archivo en la aplicación tenemos varias opciones.
 - Al descargar cuando pregunta que hacer con el archivo seleccionar: "enviar a" y seleccionar Gurumaps.
 - Enviarnos el archivo por correo a nosotros mismos, abrir el adjunto desde el móvil y seleccionar "enviar a" Gurumaps.
 
-## [Oruxmaps](#Oruxmaps)
+## Oruxmaps
 Copiar el siguiente archivo: [onlinemapsources.xml](onlinemapsources.xml) en la carpeta del móvil:
 
 ```Almacenamiento interno compartido\oruxmaps\mapfiles\customonlinemaps\```
@@ -49,21 +49,21 @@ En caso de que ya tengas el archivo XML con otros mapas, editarlo y insertar est
 <maxthreads>0</maxthreads>
 ```
 
-## [OsmAnd](#OsmAnd)
+## OsmAnd
 Cargar en la aplicación el siguiente archivo XML: [topotresc_cat_piri.xml](topotresc_cat_piri.xml)
 En ios (iphone) para enviar o cargar el archivo en la aplicación tenemos varias opciones.
 - Al descargar cuando pregunta que hacer con el archivo seleccionar: "enviar a" y seleccionar OsmAnd.
 - Enviarnos el archivo por correo a nosotros mismos, abrir el adjunto desde el móvil y seleccionar "enviar a" OsmAnd.
 
-## [MapPlus](#MapPlus)
+## MapPlus
 Cargar en la aplicación el siguiente archivo XML: [topotresc_cat_piri.xml](topotresc_cat_piri.xml)
 En ios (iphone) para enviar o cargar el archivo en la aplicación tenemos varias opciones.
 - Al descargar cuando pregunta que hacer con el archivo seleccionar: "enviar a" y seleccionar MapPlus.
 - Enviarnos el archivo por correo a nosotros mismos, abrir el adjunto desde el móvil y seleccionar "enviar a" MapPlus.
 
 
-## [MOBAC, SASPlanet, QGIS](#MOBAC)
+## MOBAC, SASPlanet, QGIS
 Ajustar o añadir en la respectiva configuración de mapas online la siguiente URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}```
 
-## [TwoNav Land](#Land)
+## TwoNav Land
 Cargar el siguiente archivo de configuración: [Topotresc.cosm](Topotresc.cosm) 
