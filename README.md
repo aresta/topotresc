@@ -1,13 +1,27 @@
 # topotresc
-This is a project to build a map server customized for mountain hiking based in the **OpenStreetMap** (OSM) data, **mapnik**, apache with **mod_tile** and the **gdal tools** among others. The system is built on docker to avoid all the installation and dependencies problems.
+This is a project to build a map server customized for mountain hiking. It is based in the **OpenStreetMap** (OSM) data with high detail **hillshading** and **elevation contour lines** from different institutional open data sources. You can see the live site here: 
 
-The map include layers with **hillshading** and **elevation contour lines** to achieve an efective relief highlighting and the look-and-feel is adapted for all kind of mountain activities.
+https://www.topotresc.com
+
+It provides also a online map source (WMS) to be used in desktop and mobile applications:
+
+- QMapShack
+- MOBAC, SASPlanet, QGIS
+- Gurumaps
+- Oruxmaps
+- OsmAnd
+- MapPlus
+- TwoNav Land
+
 
 
 |             |     |
 :-------------------------:|:-------------------------:|
 |![Sant Maurici](docs/img/st_maurici.jpg)   |  ![Balaitus](docs/img/balaitus.jpg)  |
 
+The system is built using **mapnik**, apache with **mod_tile** and the **gdal tools** among others. The development environment described here is built on docker to avoid all the installation and dependencies problems.
+
+The map include layers with **hillshading** and **elevation contour lines** to achieve an efective relief highlighting and the look-and-feel is adapted for all kind of mountain activities.
 
 
 ## Map features ##
