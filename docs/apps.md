@@ -4,11 +4,11 @@ Es posible configurar Topotres como fuente de mapas de muchas aplicaciones móvi
 
 Instrucciones para configurar Topotres en:
 
-- [QMapShack](#QMapShack)  ( Windows / Mac / Linux )
-- [Gurumaps](#Gurumaps) ( IOS: Iphone, IPAD... )
 - [Oruxmaps](#Oruxmaps) ( Android )
+- [Gurumaps](#Gurumaps) ( IOS: Iphone, IPAD... )
 - [OsmAnd](#OsmAnd) ( Android / IOS: Iphone, IPAD... )
 - [MapPlus](#MapPlus) ( Android / IOS: Iphone, IPAD... )
+- [QMapShack](#QMapShack)  ( Windows / Mac / Linux )
 - [MOBAC, SASPlanet, QGIS](#MOBAC-SASPlanet-QGIS) ( Windows / Mac / Linux )
 - [TwoNav Land](#TwoNav-Land) ( Windows / Mac )
 
