@@ -9,7 +9,7 @@ Instrucciones para configurar Topotres en:
 - [Oruxmaps](#Oruxmaps) ( Android )
 - [OsmAnd](#OsmAnd) ( Android / IOS: Iphone, IPAD... )
 - [MapPlus](#MapPlus) ( Android / IOS: Iphone, IPAD... )
-- [MOBAC, SASPlanet, QGIS](#MOBAC,-SASPlanet,-QGIS) ( Windows / Mac / Linux )
+- [MOBAC, SASPlanet, QGIS](#MOBAC-SASPlanet-QGIS) ( Windows / Mac / Linux )
 - [TwoNav Land](#TwoNav-Land) ( Windows / Mac )
 
 En general es posible configurar cualquier aplicación que adminta fuentes de mapa online WMS ajustando en la configuración la siguiene URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}```
@@ -62,7 +62,7 @@ En ios (iphone) para enviar o cargar el archivo en la aplicación tenemos varias
 - Enviarnos el archivo por correo a nosotros mismos, abrir el adjunto desde el móvil y seleccionar "enviar a" MapPlus.
 
 
-## MOBAC, SASPlanet, QGIS
+## MOBAC SASPlanet QGIS
 Ajustar o añadir en la respectiva configuración de mapas online la siguiente URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}```
 
 ## TwoNav Land
