@@ -37,7 +37,7 @@ En caso de que ya tengas el archivo XML con otros mapas, editarlo y insertar est
 <onlinemapsource uid="701">
 <name>Topotresc (PIRI)</name>
 <url><![CDATA[https://api.topotresc.com/tiles/{$z}/{$x}/{$y}.png]]></url>
-<website><![CDATA[<a href="https://topotresc.com</a>]]></website>
+<website><![CDATA[<a href="https://www.topotresc.com</a>]]></website>
 <minzoom>7</minzoom>
 <maxzoom>17</maxzoom>
 <projection>MERCATORESFERICA</projection>
