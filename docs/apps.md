@@ -12,7 +12,7 @@ Instrucciones para configurar Topotres en:
 - [MOBAC, SASPlanet, QGIS](#MOBAC-SASPlanet-QGIS) ( Windows / Mac / Linux )
 - [TwoNav Land](#TwoNav-Land) ( Windows / Mac )
 
-En general es posible configurar cualquier aplicación que adminta fuentes de mapa online WMS ajustando en la configuración la siguiene URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}```
+En general es posible configurar cualquier aplicación que adminta fuentes de mapa online WMS ajustando en la configuración la siguiene URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}.png```
 
 ## QMapShack
 Descargar el archivo TMS y copiarlo en la carpeta de mapas de QMapShack: [topotresc_cat_piri.tms](topotresc_cat_piri.tms)
