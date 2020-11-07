@@ -3,7 +3,7 @@ This is a project to build a map server customized for mountain hiking. It is ba
 
 https://www.topotresc.com
 
-It provides also a online map source (WMS) to be used in desktop and mobile applications:
+It provides also a online map source (TMS) to be used in desktop and mobile applications:
 
 - QMapShack
 - MOBAC, SASPlanet, QGIS

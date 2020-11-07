@@ -1,6 +1,6 @@
 # Configurar Topotresc para aplicaciones moviles y de escritorio
 
-Es posible configurar Topotres como fuente de mapas de muchas aplicaciones móviles y de escritorio que permitan fuentes online (WMS).
+Es posible configurar Topotres como fuente de mapas de muchas aplicaciones móviles y de escritorio que permitan fuentes online (TMS).
 
 Instrucciones para configurar Topotres en:
 
@@ -12,7 +12,7 @@ Instrucciones para configurar Topotres en:
 - [MOBAC, SASPlanet, QGIS](#MOBAC-SASPlanet-QGIS) ( Windows / Mac / Linux )
 - [TwoNav Land](#TwoNav-Land) ( Windows / Mac )
 
-En general es posible configurar cualquier aplicación que adminta fuentes de mapa online WMS ajustando en la configuración la siguiene URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}.png```
+En general es posible configurar cualquier aplicación que adminta fuentes de mapa online TMS ajustando en la configuración la siguiene URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}.png```
 
 ## QMapShack
 Descargar el archivo TMS y copiarlo en la carpeta de mapas de QMapShack: [https://www.topotresc.com/docs/topotresc_cat_piri.tms](https://www.topotresc.com/docs/topotresc_cat_piri.tms)
