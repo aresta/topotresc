@@ -166,8 +166,13 @@
 }
 
 #springs {
-  [natural = 'spring'][zoom >= 14] {
-    marker-file: url('symbols/spring.svg');
-    marker-clip: false;
+  [natural = 'spring']{
+    [zoom = 14] {
+      marker-width: 5;
+    }
+    [zoom >= 14] {
+      marker-file: url('symbols/spring.svg');
+      marker-clip: false;
+    }
   }
 }

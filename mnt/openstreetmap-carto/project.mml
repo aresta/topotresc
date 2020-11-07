@@ -152,7 +152,7 @@ Layer:
     geometry: raster
     <<: *extents
     Datasource: 
-      file: /mnt/shades/shades_es.tif
+      file: /mnt/shades/shades_merged.vrt
       type: gdal
     properties:
       minzoom: 7
@@ -167,7 +167,28 @@ Layer:
       minzoom: 7
       maxzoom: 13
 
-  - id: contours
+  - id: contours_z12
+    geometry: multilinestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, height, 
+            (height%20) as height20, 
+            (height%50) as height50, 
+            (height%100) as height100
+         FROM contour
+         WHERE way && !bbox!
+          AND ((height%20)=0
+            OR (height%50)=0
+            )
+        ) AS contours
+    properties:
+      minzoom: 12
+      maxzoom: 14
+
+  - id: contours_z15
     geometry: multilinestring
     <<: *extents
     Datasource:
@@ -181,10 +202,32 @@ Layer:
             (height%100) as height100
          FROM contour
          WHERE way && !bbox!
+          AND (height%10)=0
         ) AS contours
     properties:
-      minzoom: 12
-  
+      minzoom: 15
+      maxzoom: 16
+
+  - id: contours_z17
+    geometry: multilinestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, height, 
+            (height%10) as height10, 
+            (height%20) as height20, 
+            (height%50) as height50, 
+            (height%100) as height100
+         FROM contour
+         WHERE way && !bbox!
+          -- AND (height%5)=0
+        ) AS contours
+    properties:
+      minzoom: 17
+
+ 
   - id: landcover-line
     geometry: linestring
     <<: *extents
@@ -2340,7 +2383,8 @@ Layer:
               tourism,
               amenity,
               access,
-              tags -> 'operator' AS operator,
+              tags->'operator' AS operator, 
+              tags->'shelter_type' AS shelter_type,
               ref,
               way_area,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
@@ -2358,7 +2402,7 @@ Layer:
                 FROM planet_osm_polygon
                 WHERE way && !bbox!
                   AND tourism in ('alpine_hut', 'wilderness_hut')
-                  -- OR amenity IN ('shelter')
+                  OR amenity IN ('shelter')
               UNION ALL
               SELECT
                   way,
@@ -2373,7 +2417,7 @@ Layer:
                 FROM planet_osm_point
                 WHERE way && !bbox!
                   AND tourism in ('alpine_hut', 'wilderness_hut')
-                  -- OR amenity IN ('shelter')
+                  OR amenity IN ('shelter')
               ) _
             ) AS refs
           WHERE 

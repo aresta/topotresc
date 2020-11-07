@@ -245,12 +245,12 @@
   }
 
   // Ford tagging on points - ford on lines is defined later
-  [feature = 'highway_ford'][zoom >= 16] {
-    marker-file: url('symbols/highway/ford.svg');
-    marker-fill: @transportation-icon;
-    marker-placement: interior;
-    marker-clip: false;
-  }
+  // [feature = 'highway_ford'][zoom >= 16] {
+  //   marker-file: url('symbols/highway/ford.svg');
+  //   marker-fill: @transportation-icon;
+  //   marker-placement: interior;
+  //   marker-clip: false;
+  // }
 
   [feature = 'tourism_caravan_site'][zoom >= 16] {
     marker-file: url('symbols/tourism/caravan_park.svg');
@@ -1562,10 +1562,15 @@
     marker-clip: false;
   }
 
-  [feature = 'natural_cave_entrance'][zoom >= 15] {
-    marker-file: url('symbols/natural/cave.svg');
-    marker-placement: interior;
-    marker-clip: false;
+  [feature = 'natural_cave_entrance']{
+    [zoom = 15] {
+      marker-width: 9;
+    }
+    [zoom >= 15] {
+      marker-file: url('symbols/natural/cave.svg');
+      marker-placement: interior;
+      marker-clip: false;
+    }
   }
 
   [feature = 'waterway_waterfall'] {
@@ -2129,7 +2134,7 @@
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17],
   [feature = 'historic_city_gate'][zoom >= 17],
-  [feature = 'natural_cave_entrance'][zoom >= 15],
+  [feature = 'natural_cave_entrance'][zoom >= 16],
   [feature = 'man_made_mast'][zoom >= 17],
   [feature = 'man_made_tower'][zoom >= 17],
   [feature = 'man_made_storage_tank'][zoom >= 17],
@@ -2590,7 +2595,7 @@
     text-size: 11;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @water-text;
+    text-fill: #024168;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -3226,10 +3231,10 @@
 
 #amenity-line {
   // Ford tagging on ways
-  [feature = 'highway_ford'][zoom >= 16] {
-    marker-file: url('symbols/highway/ford.svg');
-    marker-fill: @transportation-icon;
-  }
+  // [feature = 'highway_ford'][zoom >= 16] {
+  //   marker-file: url('symbols/highway/ford.svg');
+  //   marker-fill: @transportation-icon;
+  // }
   // Slipway tagging on ways
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/leisure/slipway.svg');

@@ -2,22 +2,33 @@
 
 #refuges {
   [tourism = 'alpine_hut'][zoom >= 11],
-  [tourism = 'wilderness_hut'][zoom >= 13] {
-//   [amenity = 'shelter'][zoom >= 16] {
-    marker-file: url('symbols/amenity/shelter.svg');
-    marker-fill: black;
-    [tourism = 'wilderness_hut'] {
+  [tourism = 'wilderness_hut'][zoom >= 13],
+  [amenity = 'shelter'][shelter_type = 'basic_hut'][zoom >= 13],
+  [amenity = 'shelter'][shelter_type = 'rock_shelter'][zoom >= 15],
+  [amenity = 'shelter'][shelter_type != 'basic_hut'][shelter_type != 'rock_shelter'][zoom >= 14] {
+    marker-file: url('symbols/tourism/wilderness_hut.svg');
+    marker-fill: darken( gray, 20%);
+    marker-width: 11;
+    [zoom >= 15] { marker-width: 14; }
+    [zoom >= 16] { marker-width: 15; }
+    [tourism = 'wilderness_hut'],
+    [amenity = 'shelter'][shelter_type = 'basic_hut'] {
       marker-file: url('symbols/tourism/wilderness_hut.svg');
-      marker-fill: darken( red, 15%);
+      marker-fill: darken( red, 18%);
       marker-width: 12;
-      [zoom >= 14] { marker-width: 14; }
-      [zoom >= 16] { marker-width: 22; }
+      [zoom >= 14] { marker-width: 12; }
+      [zoom >= 16] { marker-width: 16; }
+    }
+    [amenity = 'shelter'][shelter_type = 'rock_shelter'] { 
+      marker-file: url('symbols/bunker.svg'); 
+      marker-fill: darken( gray, 10%);
+      marker-width: 13;
     }
     [tourism = 'alpine_hut'] {
       marker-file: url('symbols/tourism/alpine_hut.svg');
       marker-fill: darken( red, 5%);
       marker-width: 14;
-      [zoom >= 14] { marker-width: 17; }
+      [zoom >= 13] { marker-width: 20; }
       [zoom >= 16] { marker-width: 26; }
     }
     marker-placement: interior;
@@ -28,9 +39,9 @@
     }
   }
 
-//   [amenity = 'shelter'][zoom >= 16],
   [tourism = 'alpine_hut'][zoom >= 13],
-  [tourism = 'wilderness_hut'][zoom >= 14] {
+  [tourism = 'wilderness_hut'][zoom >= 14],
+  [amenity = 'shelter'][zoom >= 15] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -41,12 +52,12 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
-    // [amenity = 'shelter'] {
-    //   text-fill: @man-made-icon;
-    // }
+    [amenity = 'shelter'][shelter_type != 'basic_hut']{
+      text-fill: darken( gray, 25%);
+    }
     [tourism = 'alpine_hut'],
-    [tourism = 'wilderness_hut'] {
-    // [amenity = 'shelter'] {
+    [tourism = 'wilderness_hut'],
+    [amenity = 'shelter'] {
       [access != ''][access != 'permissive'][access != 'yes'] {
         text-opacity: 0.33;
         text-halo-radius: 0;

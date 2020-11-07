@@ -1,4 +1,5 @@
-@water-text: #4d80b3;
+@water-text: #024168;
+// @water-text: #4d80b3;
 @glacier: #ddecec;
 @glacier-line: #9cf;
 
@@ -92,16 +93,17 @@
       [zoom >= 15] {
         line-width: 1.5;
         line-color: white;
-        [waterway = 'stream'][zoom >= 15] {
-          line-width: 1.5;
+        [waterway = 'stream'][zoom >= 14] {
+//// ######
+          line-width: 0.9;
         }
         [int_intermittent = 'yes'] {
           line-dasharray: 4,3;
           line-cap: butt;
           line-join: round;
           line-clip: false;
-          [waterway = 'stream'][zoom >= 15] {
-            line-width: 1;
+          [waterway = 'stream'][zoom >= 14] {
+            line-width: 0.8;
           }
         }
       }
@@ -225,11 +227,11 @@
         water/line-join: round;
         water/line-clip: false;
       }
-
-      [waterway = 'stream'][zoom >= 15] {
-        water/line-width: 1.5;
+//// ######
+      [waterway = 'stream'][zoom >= 14] {
+        water/line-width: 0.7;
         [int_intermittent = 'yes'] {
-          water/line-width: 1;
+          water/line-width: 0.6;
         }
         [int_tunnel = 'yes'] {
           background/line-width: 3;
@@ -294,6 +296,7 @@
       text-size: 10;
       text-face-name: @oblique-fonts;
       text-fill: @water-text;
+      // text-fill: red;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-spacing: 600;

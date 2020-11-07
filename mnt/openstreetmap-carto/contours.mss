@@ -18,36 +18,38 @@
   raster-opacity:0.50;
 }
 
-#contours[zoom=12][height100 = 0]{
+#contours_z12[zoom=12][height100 = 0]{
   line-color: @contour;
   line-smooth: @contours-line-smooth;
   line-width: @contours-line-width * 1.1;
   line-opacity: 0.45;
 }
 
-#contours[zoom=13][height50 = 0]{
+#contours_z12[zoom=13][height50 = 0]{
   line-color: @contour;
   line-smooth: @contours-line-smooth;
   line-width: @contours-line-width * 1.1;
   line-opacity: 0.45;
 }
 
-#contours[zoom>=14][height20 = 0]{
+#contours_z12[zoom>=14][height20 = 0]{
   line-color: @contour;
   line-smooth: @contours-line-smooth;
   line-width: @contours-line-width;
   line-opacity: 0.4;
 }
 
-#contours[zoom>=15][height10 = 0]{
+#contours_z15,
+#contours_z17 {
   line-color: @contour;
   line-smooth: @contours-line-smooth;
   line-width: @contours-line-width;
   line-opacity: 0.4;
 }
 
-#contours[zoom>=14][height100 = 0],
-#contours[zoom>=15][height50 = 0] {
+#contours_z12[zoom>=14][height100 = 0],
+#contours_z15[height50 = 0],
+#contours_z17[height50 = 0] {
       line-color: darken(@contour, 10);
       line-width: @contours-line-width * 1.5;
       line-opacity: 0.55;
@@ -63,10 +65,10 @@
       }
   }
 
-#contours[zoom>=17][height10 != 0]{
-  line-color: @contour;
-  line-smooth: @contours-line-smooth;
-  line-width: @contours-line-width;
-  line-opacity: 0.4;
-}
+// #contours_z17{
+//   line-color: @contour;
+//   line-smooth: @contours-line-smooth;
+//   line-width: @contours-line-width;
+//   line-opacity: 0.4;
+// }
 
