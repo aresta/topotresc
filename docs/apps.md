@@ -11,6 +11,7 @@ Instrucciones para configurar Topotres en:
 - [QMapShack](#QMapShack)  ( Windows / Mac / Linux )
 - [MOBAC, SASPlanet, QGIS](#MOBAC-SASPlanet-QGIS) ( Windows / Mac / Linux )
 - [TwoNav Land](#TwoNav-Land) ( Windows / Mac )
+- [Viking](#Viking) ( Linux, Windows )
 
 En general es posible configurar cualquier aplicación que adminta fuentes de mapa online TMS ajustando en la configuración la siguiene URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}.png```
 
@@ -61,9 +62,25 @@ En ios (iphone) para enviar o cargar el archivo en la aplicación tenemos varias
 - Al descargar cuando pregunta que hacer con el archivo seleccionar: "enviar a" y seleccionar MapPlus.
 - Enviarnos el archivo por correo a nosotros mismos, abrir el adjunto desde el móvil y seleccionar "enviar a" MapPlus.
 
-
 ## MOBAC SASPlanet QGIS
 Ajustar o añadir en la respectiva configuración de mapas online la siguiente URL: ```https://api.topotresc.com/tiles/{z}/{x}/{y}```
 
 ## TwoNav Land
 Cargar el siguiente archivo de configuración: [https://www.topotresc.com/docs/Topotresc.cosm](https://www.topotresc.com/docs/Topotresc.cosm) 
+
+## Viking
+Añadir a maps.xml (```~/.viking/maps.xml``` en Linux) entre las etiquetas <objects> i </objects>
+
+```
+<objects>  
+  <object class="VikSlippyMapSource">
+    <property name="label">Topotresc</property>
+    <property name="hostname">api.topotresc.com</property>
+    <property name="url">https://api.topotresc.com/tiles/%d/%d/%d.png</property>
+    <property name="id">995</property>
+  </object>
+</objects>
+```
+
+A su vez, recomiendo que Edit / Layer Defaults / Map / Cache layout esté puesto a Viking y no a OSM. De esta forma, la caché se organiza por carpetas separadas dentro del Maps Directory (```~/.viking-maps``` en Linux). El nombre de las carpetas contine el id que se ponga. Como vienen pre-configurados algunos mapas a partir del 100, voy poiendo de 999 para abajo para los míos. De ahí que este tenga el 995 en el código. ¡Espero haberme explicado!
+[https://sourceforge.net/projects/viking/](https://sourceforge.net/projects/viking/)
