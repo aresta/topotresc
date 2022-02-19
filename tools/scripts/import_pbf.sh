@@ -12,6 +12,6 @@ osm2pgsql  -H postgres \
   --hstore \
   --tag-transform-script /mnt/openstreetmap-carto/openstreetmap-carto.lua \
   -C 12000 \
-  --number-processes 5 \
+  --number-processes 12 \
   -S /mnt/openstreetmap-carto/openstreetmap-carto.style \
-  /mnt/pbf/picos.pbf
+  /mnt/pbf/tot.pbf

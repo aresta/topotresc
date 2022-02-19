@@ -16,6 +16,7 @@ RUN apt-get update -qq && \
       mapnik-utils \
       python-mapnik \
       fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont \
+      python-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install mod tile
@@ -29,5 +30,6 @@ RUN mkdir -p /src && \
     make && \
     make install && \
     make install-mod_tile && \
-    ldconfig
+    ldconfig && \
+    pip install Pillow
 

@@ -161,7 +161,7 @@ Layer:
     geometry: raster
     <<: *extents
     Datasource: 
-      file: /mnt/shades/color_relief.tif
+      file: /mnt/shades/color_relief.vrt
       type: gdal
     properties:
       minzoom: 7

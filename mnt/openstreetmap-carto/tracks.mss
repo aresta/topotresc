@@ -1,94 +1,95 @@
 /* For tracks */
 
-@track-width: 1;
-@track-width: 1;
+@track-width: 1.2;
 
 @track-fill: white;
-@track-fill-noaccess: lighten(gray,40);
 @track-casing: red;
-@track-width:                 1.4;
-@tracks-background-width:     1;
+@track-fill-noaccess: lighten(gray,40);
 @tracks-bridge-casing-width:  0.5;
 @tracks-tunnel-casing-width:  1;
 
 
 #tracks {
-    [zoom = 14][tracktype != 'grade1'][tracktype != 'grade2'] {
-        line/line-width: @track-width;
-        line/line-color: lighten( red, 10);
-        line/line-opacity: 0.5;
-        line/line-clip:false;   
-    } 
+    background/line-join: round;
+    background/line-cap: round;
+    background/line-color: @track-casing;
+    background/line-opacity: 0.4;
+    line/line-cap: round;
+    line/line-join: round;
+    line/line-clip:false; 
+    line/line-opacity: 0.6;
+    line/line-color: @track-fill;
+    line/line-width: @track-width - 0.3;
+    [access = 'no'] { line/line-color: @track-fill-noaccess; }
 
-    [zoom = 14][tracktype = 'grade1'], 
-    [zoom = 14][tracktype = 'grade2'], 
-    [zoom >= 15] {
-      background/line-width: @track-width + 1.2;
-      background/line-opacity: 0.4;
-      background/line-color: @track-casing;
-      background/line-join: round;
-      background/line-cap: round;
-    }    
-
-    [zoom = 14][tracktype = 'grade1'], 
-    [zoom = 14][tracktype = 'grade2'], 
-    [zoom >= 15][tracktype = 'grade5'] {
-        background/line-width: @track-width + 1.6;
+  [zoom = 14]{
+    line/line-color: lighten( red, 10);
+    [tracktype != 'grade4'][tracktype != 'grade5'][tracktype != null]{
+      line/line-color: @track-fill;
+      background/line-width: @track-width + 1.7;
+      line/line-width: @track-width + 0.6;
     }
-    
-    [zoom >= 14][tracktype = 'grade1'], [zoom >= 14][tracktype = 'grade2'] { background/line-width: @track-width + 2; }
-    [zoom >= 15]{ background/line-width: @track-width + 3; }
-    [zoom >= 16]{ background/line-width: @track-width + 4; }
-    [zoom >= 17]{ background/line-width: @track-width + 4.8; }
-
-
-    [zoom >= 14] {
-        line/line-width: @track-width - 2;
-        line/line-color: @track-fill;
-        [access = 'no'] { line/line-color: @track-fill-noaccess; }
-        line/line-cap: round;
-        line/line-join: round;
-        line/line-opacity: 0.5;
-        line/line-clip:false;
+    [tracktype = 'grade5']{
+      line/line-opacity: 0.3;
     }
-    
-    [zoom >= 14][tracktype = 'grade1'], 
-    [zoom >= 14][tracktype = 'grade2'], 
-    [zoom >= 15][tracktype = 'grade5'] {
-        line/line-width: @track-width;
-    }
-    [zoom >= 14][tracktype = 'grade1'], [zoom >= 14][tracktype = 'grade2'] { line/line-width: @track-width + 0.7; }
-    [zoom >= 15]{ line/line-width: @track-width + 0.75; }
-    [zoom >= 16]{ line/line-width: @track-width + 1.5; }
-    [zoom >= 17]{ line/line-width: @track-width + 2.2; }
+  } 
 
-    [zoom >= 14][tracktype = 'grade1'], [zoom >= 14][tracktype = 'grade2'] {
-        line/line-dasharray: 100,0;
+  [zoom = 15] {
+    background/line-width: @track-width + 2.4;
+    line/line-width: @track-width + 0.65;
+    [tracktype = 'grade4'],
+    [tracktype = 'grade5'],
+    [tracktype = null]{
+      background/line-width: @track-width + 1.5; 
+      line/line-width: @track-width + 0.8;
     }
-    [zoom >= 15][tracktype = 'grade5'] {
+  }    
+  
+  [zoom = 16]{ 
+    background/line-width: @track-width + 3.2;
+    line/line-width: @track-width + 1.4;
+    [tracktype = 'grade4'],
+    [tracktype = 'grade5'],
+    [tracktype = null]{
+      background/line-width: @track-width + 1.8;
+      line/line-width: @track-width + 1.2;
+    }
+  }
+  [zoom >= 17]{ 
+    background/line-width: @track-width + 3.8; 
+    line/line-width: @track-width + 2.0;
+    [tracktype = 'grade4'],
+    [tracktype = 'grade5'],
+    [tracktype = null]{
+      background/line-width: @track-width + 2.4; 
+      line/line-width: @track-width + 1.8;
+    }
+  }
+
+  [zoom >= 15][tracktype = 'grade5'] {
+      background/line-opacity: 0.25;
+      line/line-opacity: 0.4;
+  }
+
+  ::casing {
+    #bridges {
+        background/line-color: darken(@track-casing,20);
+        background/line-dasharray: 6,2;
+    }
+    #tunnels {
+        background/line-color: lighten(@track-casing,20);
+        background/line-dasharray: 6,4;
+    }
+  } // casing
+
+  ::bridges_and_tunnels_background {
+    #bridges {
         line/line-dasharray: 6,2;
     }
-
-    ::casing {
-        #bridges {
-            background/line-color: darken(@track-casing,20);
-            background/line-dasharray: 6,2;
-        }
-        #tunnels {
-            background/line-color: lighten(@track-casing,20);
-            background/line-dasharray: 6,4;
-        }
-    } // casing
-
-    ::bridges_and_tunnels_background {
-        #bridges {
-            line/line-dasharray: 6,2;
-        }
-        #tunnels {
-            line/line-dasharray: 6,4;
-        }
-    } // bridges_and_tunnels_background
-    
+    #tunnels {
+        line/line-dasharray: 6,4;
+    }
+  } // bridges_and_tunnels_backgroun 
 }
 
 #paths-text-name {

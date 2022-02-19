@@ -3,8 +3,19 @@
 cd /mnt/contours
 export PGPASSWORD=render
 
-# append de contour lines
-shp2pgsql -d -I -g way -s 3857:900913 contours.shp contour | psql -h postgres -U render -d renderdb 
+# append contour lines
+
+# Pirineus + Catalunya
+shp2pgsql -d -I -g way -s 3857:900913 contours_00.shp contour | psql -h postgres -U render -d renderdb
+shp2pgsql -a -I -g way -s 3857:900913 contours_05.shp contour | psql -h postgres -U render -d renderdb
+shp2pgsql -a -I -g way -s 3857:900913 contours_10.shp contour | psql -h postgres -U render -d renderdb
+shp2pgsql -a -I -g way -s 3857:900913 contours_15.shp contour | psql -h postgres -U render -d renderdb
+shp2pgsql -a -I -g way -s 3857:900913 contours_20.shp contour | psql -h postgres -U render -d renderdb
+shp2pgsql -a -I -g way -s 3857:900913 contours_25.shp contour | psql -h postgres -U render -d renderdb
+
+# picos
+shp2pgsql -a -I -g way -s 3857:900913 contours_picos.shp contour | psql -h postgres -U render -d renderdb
+
 
 # split long contours to improve render performance
 echo 'Dividint contours llargs...' 

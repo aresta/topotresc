@@ -13,7 +13,6 @@ services:
     tty: true
 
   postgres:
-    restart: always
     image: mdillon/postgis:10
     environment:
       - POSTGRES_USER=render
@@ -28,7 +27,6 @@ services:
       - 5432:5432
 
   tileserver:
-    restart: always
     build:
       context: ./tileserver
       dockerfile: ./Dockerfile
@@ -39,8 +37,9 @@ services:
     tty: true
     volumes:
       - ./mnt:/mnt
-      - ./tileserver/tiles:/var/lib/mod_tile
+      - ./tiles:/var/lib/mod_tile
       - ./tileserver/configs/renderd.conf:/usr/local/etc/renderd.conf
       - ./tileserver/configs/mod_tile.conf:/etc/apache2/conf-enabled/mod_tile.conf
-      - ./tileserver/site:/var/www/html
+      - ./www:/var/www/html
+      - ./tileserver/scripts:/scripts
 

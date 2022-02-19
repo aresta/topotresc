@@ -1733,6 +1733,7 @@
   }
 
   // Barriers, chain...
+  [feature = 'barrier_block'],
   [feature = 'barrier_chain'],
   [feature = 'barrier_bollard'],
   [feature = 'barrier_lift_gate'],
@@ -1745,7 +1746,6 @@
     marker-allow-overlap: true;
   }
 
-  [feature = 'barrier_block'],
   [feature = 'barrier_log'],
   [feature = 'barrier_turnstile'] {
     [zoom >= 17] {

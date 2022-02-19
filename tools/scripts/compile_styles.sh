@@ -1,3 +1,3 @@
 #!/bin/bash
 
-carto /mnt/openstreetmap-carto/project.mml > /mnt/openstreetmap-carto/mapnik.xml
+carto -q /mnt/openstreetmap-carto/project.mml > /mnt/openstreetmap-carto/mapnik.xml
