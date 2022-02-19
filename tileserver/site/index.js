@@ -52,7 +52,7 @@
                 console.log(document.title);
                 hide_all_panels();
                 // menu.classList.add("hidden");
-                map.flyTo( JSON.parse( this.dataset.latlon), parseInt(this.dataset.zoom), {duration: 1.3});
+                map.flyTo( JSON.parse( this.dataset.latlon), parseInt(this.dataset.zoom), {duration: 2});
             }
         }
 
@@ -78,8 +78,8 @@
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>';
 
         ////// map layers //////
-        var topotresc_layer = L.tileLayer(window.location.protocol + '//' + window.location.host + '/osm_tiles/{z}/{x}/{y}.png', {
-        // var topotresc_layer = L.tileLayer( 'https://api.topotresc.com/tiles/{z}/{x}/{y}.png', {
+        // var topotresc_layer = L.tileLayer(window.location.protocol + '//' + window.location.host + '/osm_tiles/{z}/{x}/{y}.png', {
+        var topotresc_layer = L.tileLayer( 'https://api.topotresc.com/tiles/{z}/{x}/{y}.png', {
             minZoom: 7, maxZoom: 17,
             attribution: attribution
         });
@@ -87,7 +87,7 @@
             minZoom: 7, maxZoom: 18,
             attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
         });
-        var icc_layer = L.tileLayer( 'http://geoserveis.icc.cat/icc_mapesmultibase/noutm/wmts/topo/GRID3857/{z}/{x}/{y}.jpeg', { 
+        var icc_layer = L.tileLayer( 'http://geoserveis.icgc.cat/icc_mapesmultibase/noutm/wmts/topo/GRID3857/{z}/{x}/{y}.jpeg', { 
             minZoom: 7, maxZoom: 18,
             attribution: '<a href="http://www.icgc.cat" target="_blank">ICGC</a>'
         });

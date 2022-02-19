@@ -1,6 +1,6 @@
 <TMS>
 <Title>Topotresc</Title>
-<MinZoomLevel>2</MinZoomLevel>
+<MinZoomLevel>7</MinZoomLevel>
 <MaxZoomLevel>17</MaxZoomLevel>
 <Layer idx="0">
  <ServerUrl>https://api.topotresc.com/tiles/%1/%2/%3.png</ServerUrl>
