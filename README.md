@@ -88,6 +88,8 @@ Check posible errors.  If everything is fine later you can also execute the comm
 
 - Download and build all the needed data
 
+Note: By default the scripts are setup to render the Pyrenees and Picos de Europa area, that is quite big. To test with a smaller area you should adjust the scripts in tools/scripts/ and the .geojson areas in mnt/conf/.  You can for example comment out everything except 'picos' areas.
+
 Open a second terminal, navigate to the project folder and execute the script:
 ```
 ./build_all.sh
@@ -107,7 +109,7 @@ http://localhost
 
 ## Customize the map to another area
 
-- One geojson file with the boundaries of the map is included (mnt/conf/picos.geojson), it covers the *Picos de Europa* mountains in Spain. If you want to render another area, you have to create a new geojson file with the limits of your map. It doesn't need to be a rectangle.
+- Some geojson files with the boundaries across Spain, France and Andorra are included (mnt/conf/). It covers the Pyrenees and *Picos de Europa* mountains. If you want to render another area, you have to create a new geojson file with the limits of your map. It doesn't need to be a rectangle.
 - If the area is not in Spain you have to download the PBF from that area and find the DEMs somewhere else.
 - You will also need to adjust the initial coordinates to show the map in the index.js file.
 - If you want to adapt the styles (good luck) they are in mnt/openstreetmap-carto. You can compile them with:
@@ -119,7 +121,7 @@ docker-compose exec tools /scripts/compile_styles.sh
 
 Visit the Pyrenees and Catalonia Topotresc map: [Mapa del Pirineo](https://topotresc.com "Mapa dels Pirineus i Catalunya")
 
-(still work in progress, not always online)
+(OSM data update updated every couple of months)
 
 
 |             |     |
