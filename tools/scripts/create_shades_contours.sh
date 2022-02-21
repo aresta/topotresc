@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # hill-shades
+[ -d /mnt/shades ] || mkdir -p /mnt/shades
+[ -d /mnt/contours ] || mkdir -p /mnt/contours
 cd /mnt/shades
 ogr2ogr -f GeoJSON tot_3043.geojson -s_srs EPSG:4326 -t_srs EPSG:3043 ../conf/tot.geojson
 ogr2ogr -f GeoJSON andorra_3035.geojson -s_srs EPSG:4326 -t_srs EPSG:3035 ../conf/andorra.geojson

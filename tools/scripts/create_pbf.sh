@@ -3,6 +3,7 @@
 # Donload the PBF of the country and clip to the area defined by the json
 echo "Download PBFs, clip and build tot.pbf"
 
+[ -d /mnt/pbf ] || mkdir -p /mnt/pbf
 cd /mnt/pbf
 wget -N http://download.openstreetmap.fr/extracts/europe/spain-latest.osm.pbf
 wget -N http://download.openstreetmap.fr/extracts/europe/france-latest.osm.pbf
