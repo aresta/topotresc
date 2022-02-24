@@ -8,6 +8,7 @@ RUN apt-get update -qq && apt-get install  -y --no-install-recommends \
     curl \
     git \
     wget \
+    zip unzip \
     gpg-agent \
     nodejs \
     mapnik-utils \
