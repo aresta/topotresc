@@ -58,7 +58,6 @@
     <Font face-name="Noto Sans Sundanese Regular" />
     <Font face-name="Noto Sans Symbols Regular" />
     <Font face-name="Noto Sans Symbols2 Regular" />
-    <Font face-name="Noto Sans Syriac Eastern Regular" />
     <Font face-name="Noto Sans Tagalog Regular" />
     <Font face-name="Noto Sans Tagbanwa Regular" />
     <Font face-name="Noto Sans Tai Le Regular" />
@@ -73,12 +72,9 @@
     <Font face-name="Noto Sans Yi Regular" />
     <Font face-name="Noto Sans Arabic UI Regular" />
     <Font face-name="Noto Naskh Arabic UI Regular" />
-    <Font face-name="Noto Serif Tibetan Regular" />
-    <Font face-name="Noto Sans Tibetan Regular" />
     <Font face-name="DejaVu Sans Book" />
     <Font face-name="HanaMinA Regular" />
     <Font face-name="HanaMinB Regular" />
-    <Font face-name="Unifont Upper Medium" />
   </FontSet>
   <FontSet name="fontset-1">
     <Font face-name="Noto Sans Italic" />
@@ -127,7 +123,6 @@
     <Font face-name="Noto Sans Sundanese Regular" />
     <Font face-name="Noto Sans Symbols Regular" />
     <Font face-name="Noto Sans Symbols2 Regular" />
-    <Font face-name="Noto Sans Syriac Eastern Regular" />
     <Font face-name="Noto Sans Tagalog Regular" />
     <Font face-name="Noto Sans Tagbanwa Regular" />
     <Font face-name="Noto Sans Tai Le Regular" />
@@ -142,12 +137,9 @@
     <Font face-name="Noto Sans Yi Regular" />
     <Font face-name="Noto Sans Arabic UI Regular" />
     <Font face-name="Noto Naskh Arabic UI Regular" />
-    <Font face-name="Noto Serif Tibetan Regular" />
-    <Font face-name="Noto Sans Tibetan Regular" />
     <Font face-name="DejaVu Sans Book" />
     <Font face-name="HanaMinA Regular" />
     <Font face-name="HanaMinB Regular" />
-    <Font face-name="Unifont Upper Medium" />
   </FontSet>
   <FontSet name="fontset-2">
     <Font face-name="Noto Sans Bold" />
@@ -176,8 +168,6 @@
     <Font face-name="Noto Sans Thai UI Bold" />
     <Font face-name="Noto Sans Arabic UI Bold" />
     <Font face-name="Noto Naskh Arabic UI Bold" />
-    <Font face-name="Noto Serif Tibetan Bold" />
-    <Font face-name="Noto Sans Tibetan Bold" />
     <Font face-name="DejaVu Sans Bold" />
     <Font face-name="Noto Sans Regular" />
     <Font face-name="Noto Sans Adlam Regular" />
@@ -224,7 +214,6 @@
     <Font face-name="Noto Sans Sundanese Regular" />
     <Font face-name="Noto Sans Symbols Regular" />
     <Font face-name="Noto Sans Symbols2 Regular" />
-    <Font face-name="Noto Sans Syriac Eastern Regular" />
     <Font face-name="Noto Sans Tagalog Regular" />
     <Font face-name="Noto Sans Tagbanwa Regular" />
     <Font face-name="Noto Sans Tai Le Regular" />
@@ -239,12 +228,9 @@
     <Font face-name="Noto Sans Yi Regular" />
     <Font face-name="Noto Sans Arabic UI Regular" />
     <Font face-name="Noto Naskh Arabic UI Regular" />
-    <Font face-name="Noto Serif Tibetan Regular" />
-    <Font face-name="Noto Sans Tibetan Regular" />
     <Font face-name="DejaVu Sans Book" />
     <Font face-name="HanaMinA Regular" />
     <Font face-name="HanaMinB Regular" />
-    <Font face-name="Unifont Upper Medium" />
   </FontSet>
   <Style filter-mode="first" image-filters="scale-hsla(0,1,0,1,0.6,0.95,0,1)" name="landcover-low-zoom-low-zoom">
     <Rule>
@@ -3992,19 +3978,6 @@
 ) AS landcover_line]]></Parameter>
     </Datasource>
   </Layer>
-  <Style filter-mode="first" name="icesheet-poly">
-    <Rule>
-      <MaxScaleDenominator>25000000</MaxScaleDenominator>
-      <PolygonSymbolizer fill="#ddecec" />
-    </Rule>
-  </Style>
-  <Layer maximum-scale-denominator="25000000" name="icesheet-poly" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName><![CDATA[icesheet-poly]]></StyleName>
-    <Datasource>
-      <Parameter name="file"><![CDATA[/mnt/base_data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp]]></Parameter>
-      <Parameter name="type"><![CDATA[shape]]></Parameter>
-    </Datasource>
-  </Layer>
   <Style filter-mode="first" name="water-lines-casing">
     <Rule>
       <MaxScaleDenominator>25000</MaxScaleDenominator>
@@ -6900,49 +6873,6 @@
     AND way_area > 1*!pixel_width!::real*!pixel_height!::real
   ORDER BY COALESCE(layer,0), way_area DESC
 ) AS landcover_area_symbols]]></Parameter>
-    </Datasource>
-  </Layer>
-  <Style filter-mode="first" name="icesheet-outlines">
-    <Rule>
-      <MaxScaleDenominator>750000</MaxScaleDenominator>
-      <Filter><![CDATA[([ice_edge] = 'ice_ocean')]]></Filter>
-      <LineSymbolizer stroke="#99ccff" stroke-dasharray="4, 2" stroke-width="0.75" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>3000000</MaxScaleDenominator>
-      <MinScaleDenominator>750000</MinScaleDenominator>
-      <Filter><![CDATA[([ice_edge] = 'ice_ocean')]]></Filter>
-      <LineSymbolizer stroke="#99ccff" stroke-width="0.5" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>25000000</MaxScaleDenominator>
-      <MinScaleDenominator>3000000</MinScaleDenominator>
-      <Filter><![CDATA[([ice_edge] = 'ice_ocean')]]></Filter>
-      <LineSymbolizer stroke="#99ccff" stroke-width="0.375" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>750000</MaxScaleDenominator>
-      <Filter><![CDATA[([ice_edge] = 'ice_land')]]></Filter>
-      <LineSymbolizer stroke="#99ccff" stroke-dasharray="4, 2" stroke-width="0.75" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>3000000</MaxScaleDenominator>
-      <MinScaleDenominator>750000</MinScaleDenominator>
-      <Filter><![CDATA[([ice_edge] = 'ice_land')]]></Filter>
-      <LineSymbolizer stroke="#99ccff" stroke-width="0.5" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>25000000</MaxScaleDenominator>
-      <MinScaleDenominator>3000000</MinScaleDenominator>
-      <Filter><![CDATA[([ice_edge] = 'ice_land')]]></Filter>
-      <LineSymbolizer stroke="#99ccff" stroke-width="0.375" />
-    </Rule>
-  </Style>
-  <Layer maximum-scale-denominator="25000000" name="icesheet-outlines" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName><![CDATA[icesheet-outlines]]></StyleName>
-    <Datasource>
-      <Parameter name="file"><![CDATA[/mnt/base_data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp]]></Parameter>
-      <Parameter name="type"><![CDATA[shape]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="marinas-area">
@@ -42819,11 +42749,6 @@ SELECT
     </Rule>
     <Rule>
       <MaxScaleDenominator>5000</MaxScaleDenominator>
-      <Filter><![CDATA[([feature] = 'barrier_block')]]></Filter>
-      <MarkersSymbolizer fill="#7d7c7c" placement="interior" stroke-width="0" width="4" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>5000</MaxScaleDenominator>
       <Filter><![CDATA[([feature] = 'barrier_log')]]></Filter>
       <MarkersSymbolizer fill="#7d7c7c" placement="interior" stroke-width="0" width="4" />
     </Rule>
@@ -42856,6 +42781,10 @@ SELECT
       <MaxScaleDenominator>12500</MaxScaleDenominator>
       <Filter><![CDATA[([feature] = 'historic_wayside_cross')]]></Filter>
       <MarkersSymbolizer clip="false" file="symbols/man_made/cross.svg" fill="#000000" placement="interior" />
+    </Rule>
+    <Rule>
+      <Filter><![CDATA[([feature] = 'barrier_block')]]></Filter>
+      <MarkersSymbolizer allow-overlap="true" clip="false" file="symbols/barrier/barrier.svg" fill="#690101" width="13" />
     </Rule>
     <Rule>
       <Filter><![CDATA[([feature] = 'barrier_chain')]]></Filter>
@@ -43036,11 +42965,6 @@ SELECT
     </Rule>
     <Rule>
       <MaxScaleDenominator>5000</MaxScaleDenominator>
-      <Filter><![CDATA[([feature] = 'barrier_block')]]></Filter>
-      <MarkersSymbolizer fill="#7d7c7c" placement="interior" stroke-width="0" width="4" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>5000</MaxScaleDenominator>
       <Filter><![CDATA[([feature] = 'barrier_log')]]></Filter>
       <MarkersSymbolizer fill="#7d7c7c" placement="interior" stroke-width="0" width="4" />
     </Rule>
@@ -43073,6 +42997,10 @@ SELECT
       <MaxScaleDenominator>12500</MaxScaleDenominator>
       <Filter><![CDATA[([feature] = 'historic_wayside_cross')]]></Filter>
       <MarkersSymbolizer clip="false" file="symbols/man_made/cross.svg" fill="#000000" placement="interior" />
+    </Rule>
+    <Rule>
+      <Filter><![CDATA[([feature] = 'barrier_block')]]></Filter>
+      <MarkersSymbolizer allow-overlap="true" clip="false" file="symbols/barrier/barrier.svg" fill="#690101" width="13" />
     </Rule>
     <Rule>
       <Filter><![CDATA[([feature] = 'barrier_chain')]]></Filter>

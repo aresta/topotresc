@@ -10,13 +10,20 @@ RUN apt-get update -qq && apt-get install  -y --no-install-recommends \
     wget \
     zip unzip \
     gpg-agent \
-    nodejs \
+    python3-mapnik \
     mapnik-utils \
+    python-is-python3 \
+    python3-queuelib \
+    python3-pip \
     npm \
     osm2pgsql \
     osmium-tool \
     software-properties-common \
     build-essential \
     gdal-bin \
+    fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted \
+    ttf-unifont fonts-hanazono \
   && npm install -g npm \
-  && npm install -g carto
+  && npm install -g carto \
+  && pip install pillow \
+  && rm -rf /var/lib/apt/lists/*

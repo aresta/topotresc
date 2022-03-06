@@ -5,7 +5,7 @@ import sys, os
 import time
 from math import pi,cos,sin,log,exp,atan
 import PIL.Image
-from StringIO import StringIO
+from io import StringIO 
 from io import BytesIO
 import multiprocessing
 from zipfile import ZipFile
@@ -20,7 +20,7 @@ mapfile = "/mnt/openstreetmap-carto/mapnik.xml"
 DEG_TO_RAD = pi/180
 RAD_TO_DEG = 180/pi
 
-TILE_DIR = "/scripts/tiles/"
+TILE_DIR = "/mnt/tiles/"
 
 def minmax (a,b,c):
     a = max(a,b)
@@ -63,7 +63,7 @@ def worker( queue, TILE_SIZE, block_size, slice_to_zip=True, ZIP_TILE_SIZE=8 ): 
     folder_mask_y = ~(int('1111111',2))  # y folders contain zips that already contain 8x8 tiles each
     image_size = TILE_SIZE * block_size
     map = mapnik.Map(image_size, image_size)
-    mapnik.load_map( map, mapfile, True)
+    mapnik.load_map( map, mapfile, False)
     prj = mapnik.Projection(map.srs)
     gprj = GoogleProjection( MAX_ZOOM+1, image_size=image_size)
     image_file = BytesIO() # we will reuse the buffer
@@ -83,19 +83,19 @@ def worker( queue, TILE_SIZE, block_size, slice_to_zip=True, ZIP_TILE_SIZE=8 ): 
             continue
 
         # check that any of the ziptiles is in the list of visited tilezips
-        skip = True
-        for zx in range(block_size/ZIP_TILE_SIZE):
-                base_x = zx * ZIP_TILE_SIZE
-                for zy in range(block_size/ZIP_TILE_SIZE):
-                    base_y = zy * ZIP_TILE_SIZE
-                    zip_folder = "%s%s/%s/" % (folder, (tile_x + base_x) & folder_mask_x , (tile_y + base_y) & folder_mask_y)
-                    zip_name = "%s%s_%s.zip" % ( zip_folder, tile_x + base_x ,tile_y + base_y )
-                    if zip_name in zips_visited: 
-                        skip = False
-                        break
-        if skip:
-            print("Skipping. Tilezip not in zips_visited list", first_tile_path)
-            continue
+        # skip = True
+        # for zx in range(block_size/ZIP_TILE_SIZE):
+        #         base_x = zx * ZIP_TILE_SIZE
+        #         for zy in range(block_size/ZIP_TILE_SIZE):
+        #             base_y = zy * ZIP_TILE_SIZE
+        #             zip_folder = "%s%s/%s/" % (folder, (tile_x + base_x) & folder_mask_x , (tile_y + base_y) & folder_mask_y)
+        #             zip_name = "%s%s_%s.zip" % ( zip_folder, tile_x + base_x ,tile_y + base_y )
+        #             if zip_name in zips_visited: 
+        #                 skip = False
+        #                 break
+        # if skip:
+        #     print("Skipping. Tilezip not in zips_visited list", first_tile_path)
+        #     continue
 
         p0 = (x * image_size, (y + 1) * image_size)
         p1 = ((x + 1) * image_size, y * image_size)
@@ -123,9 +123,9 @@ def worker( queue, TILE_SIZE, block_size, slice_to_zip=True, ZIP_TILE_SIZE=8 ): 
                     base_y = zy * ZIP_TILE_SIZE
                     zip_folder = "%s%s/%s/" % (folder, (tile_x + base_x) & folder_mask_x , (tile_y + base_y) & folder_mask_y)
                     zip_name = "%s%s_%s.zip" % ( zip_folder, tile_x + base_x ,tile_y + base_y )
-                    if zip_name not in zips_visited: 
-                        print("Tile not in zips_visited list", first_tile_path)
-                        continue
+                    # if zip_name not in zips_visited: 
+                    #     print("Tile not in zips_visited list", first_tile_path)
+                    #     continue
                     # if os.path.exists( zip_name): continue
                     if not os.path.isdir( zip_folder):
                         os.makedirs(zip_folder)
@@ -165,8 +165,8 @@ def get_polygon_segments( geojson_file ):
     
 def scan_lines_segments( segments ):
     segment_points = [ first for (first,_) in segments]
-    higher_point = max( segment_points, key=lambda (x,y): y )
-    lower_point = min( segment_points, key=lambda (x,y): y )
+    higher_point = max( segment_points, key=lambda p: p[1] )
+    lower_point = min( segment_points, key=lambda p: p[1] )
     points = set()
     for y in range( lower_point[1], higher_point[1]+1):
         intersections = set()
@@ -235,12 +235,12 @@ def render_geojson( file, block_size, zooms):
     print(" *---- Zooms:%s # Block_size:%s #  Block_tiles:%s in %0.2f seconds ----*" % ( zooms, block_size, total_block_tiles , total_time))
     print("OSM tiles per second: %0.3f" % (total_block_tiles * block_size*block_size / total_time) )
 
-def read_zips_visited():
-    with open('/scripts/logs-insights-results-7.csv') as csv_file:
-        csv_reader = csv.DictReader(csv_file)
-        for row in csv_reader:
-            zips_visited.append( "%s%s/%s/%s/%s.zip" % ( TILE_DIR, row['z'],row['x'],row['y'],row['zip']) )
-    print( "zips_visited", zips_visited)
+# def read_zips_visited():
+#     with open('/scripts/logs-insights-results-7.csv') as csv_file:
+#         csv_reader = csv.DictReader(csv_file)
+#         for row in csv_reader:
+#             zips_visited.append( "%s%s/%s/%s/%s.zip" % ( TILE_DIR, row['z'],row['x'],row['y'],row['zip']) )
+#     print( "zips_visited", zips_visited)
 
 TILE_SIZE = 256
 MAX_ZOOM = 17
@@ -249,24 +249,23 @@ ll_bounds = (1.96, 41.58, 2.06, 41.68)
 # ll_bounds = (1.043, 41.058, 1.411, 41.701)
 # ll_bounds = (1.411, 41.132, 2.25, 43.00)
 queue = multiprocessing.Queue()
-zips_visited = []
+# zips_visited = []
 
 if __name__ == '__main__':
-    geojson_piricat = "/mnt/conf/tot.geojson"
+    geojson_piricat = "/mnt/conf/test.geojson"
     # geojson_piricat = "/mnt/conf/temp2.geojson"
     geojson_picos = "/mnt/conf/picos_render.geojson"
     
-    read_zips_visited()
+    # read_zips_visited()
 
     t1 = time.time()
     render_geojson( geojson_piricat, block_size=8, zooms=(7,12))
     render_geojson( geojson_piricat, block_size=16, zooms=(13,15))
     render_geojson( geojson_piricat, block_size=32, zooms=(16,17))
-    # render_geojson( geojson_piricat, block_size=8, zooms=(16,17))
 
-    render_geojson( geojson_picos, block_size=8, zooms=(7,14))
-    render_geojson( geojson_picos, block_size=16, zooms=(15,16))
-    render_geojson( geojson_picos, block_size=32, zooms=(17,17))
+    # render_geojson( geojson_picos, block_size=8, zooms=(7,14))
+    # render_geojson( geojson_picos, block_size=16, zooms=(15,16))
+    # render_geojson( geojson_picos, block_size=32, zooms=(17,17))
 
     print(" ********** TOTAL TIME #   %0.2f seconds ----*" % ( time.time() - t1))
 
@@ -286,4 +285,4 @@ if __name__ == '__main__':
     # Pujar un de suelto
     # aws s3 cp . s3://upload-tiles/ --recursive --exclude "*" --include "*/31840_23984.png"
 
-    # docker-compose exec tileserver /scripts/render_tilezip.py
+    # docker-compose exec tools /scripts/render_tilezip.py

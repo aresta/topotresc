@@ -16,7 +16,6 @@ shp2pgsql -a -I -g way -s 3857:900913 contours_25.shp contour | psql -h postgres
 # picos
 shp2pgsql -a -I -g way -s 3857:900913 contours_picos.shp contour | psql -h postgres -U render -d renderdb
 
-
 # split long contours to improve render performance
 echo 'Dividint contours llargs...' 
 psql -h postgres -U render -d renderdb -c 'with to_subdivide as (    

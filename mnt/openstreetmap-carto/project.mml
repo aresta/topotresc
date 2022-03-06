@@ -241,14 +241,6 @@ Layer:
         ) AS landcover_line
     properties:
       minzoom: 14
-  - id: icesheet-poly
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      file: /mnt/base_data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
-      type: shape
-    properties:
-      minzoom: 5
   - id: water-lines-casing
     geometry: linestring
     <<: *extents
@@ -384,14 +376,6 @@ Layer:
         ) AS landcover_area_symbols
     properties:
       cache-features: true
-      minzoom: 5
-  - id: icesheet-outlines
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      file: /mnt/base_data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp
-      type: shape
-    properties:
       minzoom: 5
   - id: marinas-area
     geometry: polygon

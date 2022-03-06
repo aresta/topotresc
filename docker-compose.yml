@@ -9,14 +9,17 @@ services:
       - postgres
     volumes:
       - ./mnt:/mnt
+      - ./mnt/dem:/mnt/dem
       - ./tools/scripts:/scripts
     tty: true
 
   postgres:
-    image: mdillon/postgis:10
+    build:
+      context: ./postgres
+      dockerfile: ./Dockerfile
     environment:
-      - POSTGRES_USER=render
       - POSTGRES_PASSWORD=render
+      - POSTGRES_USER=render
       - POSTGRES_DB=renderdb
     volumes:
       - ./mnt:/mnt
@@ -26,20 +29,20 @@ services:
     ports:
       - 5432:5432
 
-  tileserver:
-    build:
-      context: ./tileserver
-      dockerfile: ./Dockerfile
-    links:
-      - postgres
-    ports:
-      - 80:80
-    tty: true
-    volumes:
-      - ./mnt:/mnt
-      - ./tiles:/var/lib/mod_tile
-      - ./tileserver/configs/renderd.conf:/usr/local/etc/renderd.conf
-      - ./tileserver/configs/mod_tile.conf:/etc/apache2/conf-enabled/mod_tile.conf
-      - ./www:/var/www/html
-      - ./tileserver/scripts:/scripts
+  # tileserver:
+  #   build:
+  #     context: ./tileserver
+  #     dockerfile: ./Dockerfile
+  #   links:
+  #     - postgres
+  #   ports:
+  #     - 80:80
+  #   tty: true
+  #   volumes:
+  #     - ./mnt:/mnt
+  #     - ./tiles:/var/lib/mod_tile
+  #     - ./tileserver/configs/renderd.conf:/usr/local/etc/renderd.conf
+  #     - ./tileserver/configs/mod_tile.conf:/etc/apache2/conf-enabled/mod_tile.conf
+  #     - ./www:/var/www/html
+  #     - ./tileserver/scripts:/scripts
 

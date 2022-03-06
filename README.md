@@ -92,7 +92,7 @@ Note: By default the scripts are setup to render the Pyrenees and Picos de Europ
 
 Open a second terminal, navigate to the project folder and execute the script:
 ```
-./build_all.sh
+./build_test.sh
 ```
 This can take a long time and generate a lot of GBs, depending on the area.  For the small picos area provided it is about 6GB and 30' downloading and building on a regular desktop computer. 
 (*Make sure that the postgres database in the container (previuos step) is up and running*).

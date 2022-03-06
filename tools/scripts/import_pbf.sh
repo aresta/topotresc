@@ -14,4 +14,4 @@ osm2pgsql  -H postgres \
   -C 12000 \
   --number-processes 12 \
   -S /mnt/openstreetmap-carto/openstreetmap-carto.style \
-  /mnt/pbf/tot.pbf
+  /mnt/pbf/$AREA.pbf
