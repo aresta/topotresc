@@ -44,6 +44,14 @@ gdal_contour -i 30 -off 15 -a height dem_merged.tif ../contours/contours_15.shp
 gdal_contour -i 30 -off 20 -a height dem_merged.tif ../contours/contours_20.shp
 gdal_contour -i 30 -off 25 -a height dem_merged.tif ../contours/contours_25.shp
 
+# simplify the curves, with a tolerance of 2 (meters, I guess)
+ogr2ogr ../contours/contours_00_simpl.shp ../contours/contours_00.shp -simplify 2
+ogr2ogr ../contours/contours_05_simpl.shp ../contours/contours_05.shp -simplify 2
+ogr2ogr ../contours/contours_10_simpl.shp ../contours/contours_10.shp -simplify 2
+ogr2ogr ../contours/contours_15_simpl.shp ../contours/contours_15.shp -simplify 2
+ogr2ogr ../contours/contours_20_simpl.shp ../contours/contours_20.shp -simplify 2
+ogr2ogr ../contours/contours_25_simpl.shp ../contours/contours_25.shp -simplify 2
+# rm 
 
 ### Picos ###
 echo "Picos"
@@ -53,6 +61,7 @@ gdaldem hillshade -z 1.2 -multidirectional dem_picos.tif shades_picos.tif
 
 # Picos contours
 gdal_contour -i 5 -off 0  -a height dem_picos.tif ../contours/contours_picos.shp
+ogr2ogr ../contours/contours_picos_simpl.shp ../contours/contours_picos.shp -simplify 2
 
 # merge all shades
 gdalbuildvrt shades_merged.vrt shades_and.tif shades_fr.tif shades_cat_es.tif shades_picos.tif

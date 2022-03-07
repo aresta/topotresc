@@ -14,6 +14,7 @@ gdaldem hillshade -z 1.2 -multidirectional dem_test.tif shades_test.tif
 
 # test contours
 gdal_contour -i 5 -off 0  -a height dem_test.tif ../contours/contours_test.shp
+ogr2ogr ../contours/contours_test_simpl.shp ../contours/contours_test.shp -simplify 2
 
 # merge all shades
 gdalbuildvrt shades_merged.vrt shades_test.tif

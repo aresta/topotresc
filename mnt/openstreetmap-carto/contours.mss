@@ -2,7 +2,7 @@
 @contours-text: darken(gray, 10);
 
 @contours-line-width: 0.6;
-@contours-line-smooth: 0.1;   // A value from 0 to 1. 0=no smoothing
+@contours-line-smooth: 0.4;   // A value from 0 to 1. 0=no smoothing
 
 #hillshade {
   raster-scaling: bilinear;
