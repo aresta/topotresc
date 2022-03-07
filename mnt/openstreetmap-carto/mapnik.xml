@@ -73,8 +73,6 @@
     <Font face-name="Noto Sans Arabic UI Regular" />
     <Font face-name="Noto Naskh Arabic UI Regular" />
     <Font face-name="DejaVu Sans Book" />
-    <Font face-name="HanaMinA Regular" />
-    <Font face-name="HanaMinB Regular" />
   </FontSet>
   <FontSet name="fontset-1">
     <Font face-name="Noto Sans Italic" />
@@ -138,8 +136,6 @@
     <Font face-name="Noto Sans Arabic UI Regular" />
     <Font face-name="Noto Naskh Arabic UI Regular" />
     <Font face-name="DejaVu Sans Book" />
-    <Font face-name="HanaMinA Regular" />
-    <Font face-name="HanaMinB Regular" />
   </FontSet>
   <FontSet name="fontset-2">
     <Font face-name="Noto Sans Bold" />
@@ -229,8 +225,6 @@
     <Font face-name="Noto Sans Arabic UI Regular" />
     <Font face-name="Noto Naskh Arabic UI Regular" />
     <Font face-name="DejaVu Sans Book" />
-    <Font face-name="HanaMinA Regular" />
-    <Font face-name="HanaMinB Regular" />
   </FontSet>
   <Style filter-mode="first" image-filters="scale-hsla(0,1,0,1,0.6,0.95,0,1)" name="landcover-low-zoom-low-zoom">
     <Rule>
@@ -3764,32 +3758,32 @@
     <Rule>
       <MaxScaleDenominator>50000</MaxScaleDenominator>
       <Filter><![CDATA[([height100] = 0) and ([height20] = 0) and ([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
+      <LineSymbolizer smooth="0.4" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
       <TextSymbolizer fill="#676767" fontset-name="fontset-0" placement="line" size="11" spacing="800"><![CDATA[[height]]]></TextSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
       <MinScaleDenominator>50000</MinScaleDenominator>
       <Filter><![CDATA[([height100] = 0) and ([height20] = 0) and ([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>200000</MaxScaleDenominator>
       <MinScaleDenominator>100000</MinScaleDenominator>
       <Filter><![CDATA[([height100] = 0) and ([height20] = 0) and ([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>50000</MaxScaleDenominator>
       <Filter><![CDATA[([height100] = 0) and ([height20] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
+      <LineSymbolizer smooth="0.4" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
       <TextSymbolizer fill="#676767" fontset-name="fontset-0" placement="line" size="11" spacing="800"><![CDATA[[height]]]></TextSymbolizer>
     </Rule>
     <Rule>
       <MaxScaleDenominator>200000</MaxScaleDenominator>
       <MinScaleDenominator>100000</MinScaleDenominator>
       <Filter><![CDATA[([height100] = 0) and ([height20] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>50000</MaxScaleDenominator>
@@ -3801,13 +3795,13 @@
       <MaxScaleDenominator>100000</MaxScaleDenominator>
       <MinScaleDenominator>50000</MinScaleDenominator>
       <Filter><![CDATA[([height100] = 0) and ([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>200000</MaxScaleDenominator>
       <MinScaleDenominator>100000</MinScaleDenominator>
       <Filter><![CDATA[([height100] = 0) and ([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>50000</MaxScaleDenominator>
@@ -3819,29 +3813,29 @@
       <MaxScaleDenominator>200000</MaxScaleDenominator>
       <MinScaleDenominator>100000</MinScaleDenominator>
       <Filter><![CDATA[([height100] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>50000</MaxScaleDenominator>
       <Filter><![CDATA[([height20] = 0) and ([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
       <MinScaleDenominator>50000</MinScaleDenominator>
       <Filter><![CDATA[([height20] = 0) and ([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>50000</MaxScaleDenominator>
       <Filter><![CDATA[([height20] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
     </Rule>
     <Rule>
       <MaxScaleDenominator>100000</MaxScaleDenominator>
       <MinScaleDenominator>50000</MinScaleDenominator>
       <Filter><![CDATA[([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.45" stroke-width="0.66" />
     </Rule>
   </Style>
   <Layer maximum-scale-denominator="200000" minimum-scale-denominator="25000" name="contours_z12" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
@@ -3871,16 +3865,16 @@
   <Style filter-mode="first" name="contours_z15">
     <Rule>
       <Filter><![CDATA[([height50] = 0) and ([height100] != 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.66" />
       <TextSymbolizer fill="#676767" fontset-name="fontset-0" placement="line" size="10" spacing="800"><![CDATA[[height]]]></TextSymbolizer>
     </Rule>
     <Rule>
       <Filter><![CDATA[([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
+      <LineSymbolizer smooth="0.4" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
       <TextSymbolizer fill="#676767" fontset-name="fontset-0" placement="line" size="11" spacing="800"><![CDATA[[height]]]></TextSymbolizer>
     </Rule>
     <Rule>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
     </Rule>
   </Style>
   <Layer maximum-scale-denominator="25000" minimum-scale-denominator="5000" name="contours_z15" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
@@ -3909,16 +3903,16 @@
   <Style filter-mode="first" name="contours_z17">
     <Rule>
       <Filter><![CDATA[([height50] = 0) and ([height100] != 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.66" />
+      <LineSymbolizer smooth="0.4" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.66" />
       <TextSymbolizer fill="#676767" fontset-name="fontset-0" placement="line" size="10" spacing="800"><![CDATA[[height]]]></TextSymbolizer>
     </Rule>
     <Rule>
       <Filter><![CDATA[([height50] = 0)]]></Filter>
-      <LineSymbolizer smooth="0.1" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
+      <LineSymbolizer smooth="0.4" stroke="#0d0d0d" stroke-opacity="0.55" stroke-width="0.8999999999999999" />
       <TextSymbolizer fill="#676767" fontset-name="fontset-0" placement="line" size="11" spacing="800"><![CDATA[[height]]]></TextSymbolizer>
     </Rule>
     <Rule>
-      <LineSymbolizer smooth="0.1" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
+      <LineSymbolizer smooth="0.4" stroke="#272727" stroke-opacity="0.4" stroke-width="0.6" />
     </Rule>
   </Style>
   <Layer maximum-scale-denominator="5000" name="contours_z17" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">

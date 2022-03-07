@@ -4,7 +4,7 @@ MAINTAINER arestabrucs
 # and ideas from https://github.com/jimmyrocks/osm-tiles-mapnik
 
 ENV DEBIAN_FRONTEND=nonintercative
-RUN apt-get update -qq && apt-get install  -y --no-install-recommends \
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     curl \
     git \
     wget \
@@ -21,8 +21,8 @@ RUN apt-get update -qq && apt-get install  -y --no-install-recommends \
     software-properties-common \
     build-essential \
     gdal-bin \
-    fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted \
-    ttf-unifont fonts-hanazono \
+    fonts-noto-hinted fonts-noto-unhinted \
+    ttf-unifont \
   && npm install -g npm \
   && npm install -g carto \
   && pip install pillow \

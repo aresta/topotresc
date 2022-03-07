@@ -131,12 +131,8 @@ A regular style.
                 "Noto Sans Tifinagh Regular",
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
-
                 "Noto Sans Arabic UI Regular", "Noto Naskh Arabic UI Regular",
-                
-                "DejaVu Sans Book",
-
-                "HanaMinA Regular", "HanaMinB Regular";
+                "DejaVu Sans Book";
 
 /*
 A bold style is available for almost all scripts. Bold text is heavier than
