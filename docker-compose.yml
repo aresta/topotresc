@@ -26,6 +26,8 @@ services:
       - ./postgres/initdb:/docker-entrypoint-initdb.d
       - ./postgres/scripts:/scripts
       - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf:/etc/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql.conf
     ports:
       - 5432:5432
 
