@@ -99,11 +99,10 @@ http://127.0.0.1:5000
 This is a very simple web and tile server based in Python and Flask. This is only intended for testing and the performance is very poor, but it works. 
 
 ## Customize the map to another area
-You check the rest of script to find how to build and upload the data for other larger areas.
-- Some geojson files with the boundaries across Spain, France and Andorra are included (mnt/conf/). It covers the Pyrenees and *Picos de Europa* mountains. If you want to render another area, you have to create a new geojson file with the limits of your map. It doesn't need to be a rectangle.
-- You have to download the PBF from that area and find the DEMs somewhere else.
-- You will also need to adjust the initial coordinates to show the map in the index.js file.
-- If you want to adapt the styles (good luck) they are in mnt/openstreetmap-carto. You can compile them with:
+To create a map of your preferred area you will need first to define the map area in a geojson file in the /mnt/conf folder. There are some example there.  Then you have to download all the needed OSM and elevation data, see below.
+You can check the rest of scripts to find how to download and build the needed data.
+
+If you want to adapt the styles (good luck) they are in mnt/openstreetmap-carto. You can compile them with:
 ```
 docker-compose exec tools /scripts/compile_styles.sh
 ```
