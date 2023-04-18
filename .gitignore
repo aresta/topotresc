@@ -1,7 +1,9 @@
 mnt/base_data
 postgres/data
-mnt/contours
+mnt/contours/*
+!mnt/contours/contours_test.sql.gz
 mnt/dem
-mnt/pbf
-mnt/shades
+mnt/pbf/*
+!mnt/pbf/test.pbf
+mnt/shades/*
 tiles/
