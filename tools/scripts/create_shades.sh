@@ -1,9 +1,8 @@
 #!/bin/bash
 
-echo "Creating shades & contours"
+echo "Creating shades"
 # hill-shades
 [ -d /mnt/shades ] || mkdir -p /mnt/shades
-[ -d /mnt/contours ] || mkdir -p /mnt/contours
 cd /mnt/shades
 ogr2ogr -f GeoJSON tot_3043.geojson -s_srs EPSG:4326 -t_srs EPSG:3043 ../conf/tot.geojson
 ogr2ogr -f GeoJSON andorra_3035.geojson -s_srs EPSG:4326 -t_srs EPSG:3035 ../conf/andorra.geojson
@@ -36,32 +35,11 @@ gdaldem hillshade -z 1.2 -multidirectional dem_cat_es.tif shades_cat_es.tif
 echo "Creating dem_merged.tif"
 gdalwarp --config GDAL_CACHEMAX 500 -wm 500 -multi -wo NUM_THREADS=ALL_CPUS -overwrite -co COMPRESS=DEFLATE -co PREDICTOR=2 -co TILED=YES -co BIGTIFF=YES -r bilinear dem_and.tif dem_fr.tif dem_cat_es.tif dem_merged.tif
 
-echo "Creating contours"
-gdal_contour -i 30 -off 0  -a height dem_merged.tif ../contours/contours_00.shp
-gdal_contour -i 30 -off 5  -a height dem_merged.tif ../contours/contours_05.shp
-gdal_contour -i 30 -off 10 -a height dem_merged.tif ../contours/contours_10.shp
-gdal_contour -i 30 -off 15 -a height dem_merged.tif ../contours/contours_15.shp
-gdal_contour -i 30 -off 20 -a height dem_merged.tif ../contours/contours_20.shp
-gdal_contour -i 30 -off 25 -a height dem_merged.tif ../contours/contours_25.shp
-
-# simplify the curves, with a tolerance of 2 (meters, I guess)
-ogr2ogr ../contours/contours_00_simpl.shp ../contours/contours_00.shp -simplify 2
-ogr2ogr ../contours/contours_05_simpl.shp ../contours/contours_05.shp -simplify 2
-ogr2ogr ../contours/contours_10_simpl.shp ../contours/contours_10.shp -simplify 2
-ogr2ogr ../contours/contours_15_simpl.shp ../contours/contours_15.shp -simplify 2
-ogr2ogr ../contours/contours_20_simpl.shp ../contours/contours_20.shp -simplify 2
-ogr2ogr ../contours/contours_25_simpl.shp ../contours/contours_25.shp -simplify 2
-# rm 
-
 ### Picos ###
 echo "Picos"
 gdalbuildvrt -a_srs EPSG:25830 dem_picos.vrt ../dem/es/picos/*_HU30_*.asc
 gdalwarp -ts 9500 0 -multi -wo NUM_THREADS=ALL_CPUS -of GTiff -overwrite -co COMPRESS=DEFLATE -co PREDICTOR=2 -co TILED=YES -t_srs EPSG:3857 -co BIGTIFF=YES -r bilinear  -cutline picos_3043.geojson -crop_to_cutline dem_picos.vrt dem_picos.tif
 gdaldem hillshade -z 1.2 -multidirectional dem_picos.tif shades_picos.tif
-
-# Picos contours
-gdal_contour -i 5 -off 0  -a height dem_picos.tif ../contours/contours_picos.shp
-ogr2ogr ../contours/contours_picos_simpl.shp ../contours/contours_picos.shp -simplify 2
 
 # merge all shades
 gdalbuildvrt shades_merged.vrt shades_and.tif shades_fr.tif shades_cat_es.tif shades_picos.tif

@@ -5,8 +5,8 @@ echo "Download PBFs, clip and build tot.pbf"
 
 [ -d /mnt/pbf ] || mkdir -p /mnt/pbf
 cd /mnt/pbf
-# wget -N http://download.openstreetmap.fr/extracts/europe/spain-latest.osm.pbf
-# wget -N http://download.openstreetmap.fr/extracts/europe/france-latest.osm.pbf
+wget -N http://download.openstreetmap.fr/extracts/europe/spain-latest.osm.pbf
+wget -N http://download.openstreetmap.fr/extracts/europe/france-latest.osm.pbf
 wget -N http://download.geofabrik.de/europe/andorra-latest.osm.pbf
 
 # Clip big PBF to the desired area defined by the geojson (it should contain a feature, not a collection of features)

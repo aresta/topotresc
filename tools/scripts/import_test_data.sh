@@ -3,7 +3,7 @@
 export PGUSER=render
 export PGPASSWORD=render
 
-# NO esborra la taula contours
+echo 'Importing OSM data'
 osm2pgsql  -H postgres \
   -d renderdb \
   --create \
@@ -14,4 +14,11 @@ osm2pgsql  -H postgres \
   -C 12000 \
   --number-processes 12 \
   -S /mnt/openstreetmap-carto/openstreetmap-carto.style \
-  /mnt/pbf/$AREA.pbf
+  /mnt/pbf/test.pbf
+
+
+echo 'Importing contours data'
+gunzip /mnt/contours/contours_test.sql.gz -c | psql -h postgres -U render -d renderdb
+
+cd /scripts
+./render_tilezip.py

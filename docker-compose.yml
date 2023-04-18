@@ -9,9 +9,14 @@ services:
       - postgres
     volumes:
       - ./mnt:/mnt
+      - ./tiles:/tiles
+      - ./www:/www
       - ./mnt/dem:/mnt/dem
+      - ./tools/web_server:/web_server
       - ./tools/scripts:/scripts
     tty: true
+    ports:
+      - 5000:5000
 
   postgres:
     build:
@@ -22,29 +27,11 @@ services:
       - POSTGRES_USER=render
       - POSTGRES_DB=renderdb
     volumes:
-      - ./mnt:/mnt
       - ./postgres/initdb:/docker-entrypoint-initdb.d
-      - ./postgres/scripts:/scripts
       - ./postgres/data:/var/lib/postgresql/data
       - ./postgres/postgresql.conf:/etc/postgresql.conf
     command: postgres -c config_file=/etc/postgresql.conf
     ports:
       - 5432:5432
-
-  # tileserver:
-  #   build:
-  #     context: ./tileserver
-  #     dockerfile: ./Dockerfile
-  #   links:
-  #     - postgres
-  #   ports:
-  #     - 80:80
-  #   tty: true
-  #   volumes:
-  #     - ./mnt:/mnt
-  #     - ./tiles:/var/lib/mod_tile
-  #     - ./tileserver/configs/renderd.conf:/usr/local/etc/renderd.conf
-  #     - ./tileserver/configs/mod_tile.conf:/etc/apache2/conf-enabled/mod_tile.conf
-  #     - ./www:/var/www/html
-  #     - ./tileserver/scripts:/scripts
+    stop_grace_period: 120s
 

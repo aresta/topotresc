@@ -196,36 +196,36 @@ Layer:
       table: |-
         (SELECT
             way, height, 
-            (height%10) as height10, 
+            -- (height%10) as height10, 
             (height%20) as height20, 
             (height%50) as height50, 
             (height%100) as height100
          FROM contour
          WHERE way && !bbox!
-          AND (height%10)=0
+          -- AND (height%10)=0
         ) AS contours
     properties:
       minzoom: 15
-      maxzoom: 16
+      maxzoom: 17
 
-  - id: contours_z17
-    geometry: multilinestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, height, 
-            (height%10) as height10, 
-            (height%20) as height20, 
-            (height%50) as height50, 
-            (height%100) as height100
-         FROM contour
-         WHERE way && !bbox!
-          -- AND (height%5)=0
-        ) AS contours
-    properties:
-      minzoom: 17
+  # - id: contours_z17
+  #   geometry: multilinestring
+  #   <<: *extents
+  #   Datasource:
+  #     <<: *osm2pgsql
+  #     table: |-
+  #       (SELECT
+  #           way, height, 
+  #           (height%10) as height10, 
+  #           (height%20) as height20, 
+  #           (height%50) as height50, 
+  #           (height%100) as height100
+  #        FROM contour
+  #        WHERE way && !bbox!
+  #         -- AND (height%5)=0
+  #       ) AS contours
+  #   properties:
+  #     minzoom: 17
 
  
   - id: landcover-line

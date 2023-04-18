@@ -11,7 +11,7 @@ longlat = mapnik.Projection('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
 mapfile = "/mnt/openstreetmap-carto/mapnik.xml"
 
 # bounds = (-4.915, 43.162, -4.805, 43.211) # Picos
-bounds = (1.94, 41.62, 2.03, 41.67)  # St Llorenç
+bounds = (2.00, 41.63, 2.03, 41.65)  # St Llorenç
 
 start_time = time.time()
 
@@ -28,5 +28,5 @@ im = mapnik.Image( image_size, image_size)
 mapnik.render( map, im)
 
 im.save('/mnt/test.png','png256:z=9')
-print("--- %s seconds ---" % (time.time() - start_time))
+print("Render time: %s seconds" % (time.time() - start_time))
 

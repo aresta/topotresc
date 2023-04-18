@@ -67,7 +67,7 @@
         }
         // Get last position from localStorage
         if( !center){
-            center = JSON.parse(localStorage.getItem('latlon')) || [42.595, 0.96];
+            center = JSON.parse(localStorage.getItem('latlon')) || [42.116, 1.633];
             zoom = localStorage.getItem('zoom') || 14;
         }
         if(zoom > 16) zoom = 16;
@@ -78,7 +78,7 @@
         '<a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>';
 
         ////// map layers //////
-        var topotresc_layer = L.tileLayer(window.location.protocol + '//' + window.location.host + '/osm_tiles/{z}/{x}/{y}.png', {
+        var topotresc_layer = L.tileLayer(window.location.protocol + '//' + window.location.host + '/api/{z}/{x}/{y}.png', {
         // var topotresc_layer = L.tileLayer( 'https://api.topotresc.com/tiles/{z}/{x}/{y}.png', {
         // var topotresc_layer = L.tileLayer( 'http://127.0.0.1:3000/tilezip/{z}/{x}/{y}.png', {
         // var topotresc_layer = L.tileLayer( ' https://p8bkcty6z7.execute-api.eu-west-3.amazonaws.com/Prod/tiles/{z}/{x}/{y}.png', {

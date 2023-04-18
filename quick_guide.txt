@@ -1,0 +1,56 @@
+    cd ~/osm/topotresc/
+
+# arrancar docker containers:
+    docker-compose up
+
+# Baixar nomes dades OSM i regenerar tiles:
+    arrancar docker
+    docker-compose exec tools /scripts/create_pbf.sh
+    docker-compose exec --env AREA=tot tools /scripts/import_pbf.sh
+    
+    # revisar directory de tiles anteriors: mnt/tiles/
+    # revisar arees a renderitzar al script: tools/scripts/render_tilezip.py  (geojson_piricat i geojson_picos)
+    docker-compose exec tools /scripts/render_tilezip.py
+    # fer neteja de tiles. Esborrar arxius de menys de xxx i folders vuits
+    cd mnt/tiles/
+    find 7 -size -25k -delete
+    find 8 -size -25k -delete
+    find 9 -size -25k -delete
+    find 10 -size -25k -delete
+    find 11 -size -25k -delete
+    find 12 -size -50k -delete
+    find 13 -size -120k -delete
+    find 14 -size -120k -delete
+    find 15 -size -120k -delete
+    find 16 -size -240k -delete
+    find 17 -size -240k -delete
+
+    # AWS
+    # Pujar un de suelto
+    # aws s3 cp . s3://upload-tiles/ --recursive --exclude "*" --include "*/4096_3008.png"
+
+    # copiar carpetes
+    # aws s3 cp ./8 s3://upload-tiles/8 --recursive --dryrun
+    #
+    aws s3 cp ./8 s3://upload-tiles/8 --recursive
+    aws s3 cp ./9 s3://upload-tiles/9 --recursive
+    aws s3 cp ./10 s3://upload-tiles/10 --recursive
+    aws s3 cp ./11 s3://upload-tiles/11 --recursive --exclude ".DS_Store"
+    aws s3 cp ./12 s3://upload-tiles/12 --recursive --exclude ".DS_Store"
+    aws s3 cp ./13 s3://upload-tiles/13 --recursive --exclude ".DS_Store"
+    aws s3 cp ./14 s3://upload-tiles/14 --recursive --exclude ".DS_Store"
+    aws s3 cp ./15 s3://upload-tiles/15 --recursive --exclude ".DS_Store"
+    aws s3 cp ./16 s3://upload-tiles/16 --recursive --exclude ".DS_Store"
+
+    # aws s3 cp ./17 s3://upload-tiles/17 --recursive --exclude ".DS_Store"
+    aws s3 cp ./17 s3://upload-tiles/17 --recursive --exclude ".DS_Store" --exclude "*" --include "63*.png" --cli-read-timeout 300 --cli-connect-timeout 300
+    aws s3 cp ./17 s3://upload-tiles/17 --recursive --exclude ".DS_Store" --exclude "*" --include "64*.png" --cli-read-timeout 300 --cli-connect-timeout 300
+    aws s3 cp ./17 s3://upload-tiles/17 --recursive --exclude ".DS_Store" --exclude "*" --include "65*.png" --cli-read-timeout 300 --cli-connect-timeout 300
+    aws s3 cp ./17 s3://upload-tiles/17 --recursive --exclude ".DS_Store" --exclude "*" --include "66*.png" --cli-read-timeout 300 --cli-connect-timeout 300
+
+    # copiar tots: Arrosegar carpetes de la 7 a la 17 a:  s3://upload-tiles/
+
+
+CREATE INDEX contour_geom_idx
+  ON contour
+  USING GIST (way);

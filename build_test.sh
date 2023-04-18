@@ -1,27 +1,51 @@
-# echo "Download SHPs of the coasts..."
-# Run this only the first time. Once the files are in mnt/base_data/ you can comment out the line below
-# docker-compose exec tools /scripts/download_shapefiles.sh
+# PBF
+cd /mnt/pbf/
+wget -N http://download.openstreetmap.fr/extracts/europe/spain-latest.osm.pbf
+osmium extract --overwrite -p ../conf/test.geojson spain-latest.osm.pbf -o test.pbf
+export PGUSER=render
+export PGPASSWORD=render
+# NO esborra la taula contours
+osm2pgsql  -H postgres \
+  -d renderdb \
+  --create \
+  --slim \
+  -G \
+  --hstore \
+  --tag-transform-script /mnt/openstreetmap-carto/openstreetmap-carto.lua \
+  -C 12000 \
+  --number-processes 12 \
+  -S /mnt/openstreetmap-carto/openstreetmap-carto.style \
+  test.pbf
 
-# create a geojson with the area of your map and put in /mnt/pbf. It will be used to clip the osm data, the contours and the hill-shade image
-# the script will download pbf's of spain, france & andorra and clip & merge it to the geojson area.
-docker-compose exec tools /scripts/create_pbf_test.sh
+# shades
+cd /mnt/shades
+ogr2ogr -f GeoJSON test_3043.geojson -s_srs EPSG:4326 -t_srs EPSG:3043 ../conf/test.geojson
+gdalbuildvrt -a_srs EPSG:25830 dem_test.vrt ../dem/es/*_HU30_*.asc
+gdalwarp -multi -wo NUM_THREADS=ALL_CPUS -of GTiff -overwrite -co COMPRESS=DEFLATE -co PREDICTOR=2 -co TILED=YES -t_srs EPSG:3857 -co BIGTIFF=YES -r bilinear  -cutline test_3043.geojson -crop_to_cutline dem_test.vrt dem_test.tif
+gdaldem hillshade -z 1.2 -multidirectional dem_test.tif shades_test.tif
+gdalbuildvrt shades_merged.vrt shades_test.tif
 
-# get your DEM files from the spanish IGN and put them in mnt/dem/es
-# for DEMs from other sources you will need to adjust a bit the next script
-# Run this only when you change the area of your map. Otherwise the shades and countour lines are always the same
-docker-compose exec tools /scripts/create_shades_contours_test.sh
+# color_relief
+gdaldem color-relief -of PNG dem_test.tif ../conf/color_relief.txt color_relief_test.tif
+gdalbuildvrt color_relief.vrt color_relief_test.tif
 
-# Import to the DB. This will take a while... well, like the other steps
-docker-compose exec --env AREA=test tools /scripts/import_pbf.sh
-# Import contours only if you changed the area of your map. Otherwise it's needed only the 1st time, as they would be already in the DB.
-docker-compose exec postgres /scripts/import_contours_test.sh
+# contours
+cd /mnt/contours
+export OGR_GEOJSON_MAX_OBJ_SIZE=500MB
+gdal_contour -i 10 -f GeoJSON -a height -lco COORDINATE_PRECISION=3 ../shades/dem_test.tif contours_test.geojson
+ogr2ogr -lco GEOMETRY_NAME=way -lco COLUMN_TYPES=height=int -f PGDump --config PG_USE_COPY YES >(gzip > contours_test.sql.gz) contours_test.geojson -simplify 2 -progress
+# rm contours_test.geojson
+export PGPASSWORD=render
+gunzip contours_test.sql.gz -c | psql -h postgres -U render -d renderdb
 
 # compile the styles, only needed if you change them
 #docker-compose exec tools /scripts/compile_styles.sh
 
+cd /scripts
+./render_tilezip.py
+
 # here we go
-# ./start_web_server.sh
+# start flask server
 
-# point your browser to http://localhost
+# point your browser to http://127.0.0.1:5000/
 
-docker-compose exec tools /scripts/render_tile.py

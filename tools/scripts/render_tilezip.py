@@ -20,7 +20,7 @@ mapfile = "/mnt/openstreetmap-carto/mapnik.xml"
 DEG_TO_RAD = pi/180
 RAD_TO_DEG = 180/pi
 
-TILE_DIR = "/mnt/tiles/"
+TILES_DIR = "/tiles/"
 
 def minmax (a,b,c):
     a = max(a,b)
@@ -112,7 +112,12 @@ def worker( queue, TILE_SIZE, block_size, slice_to_zip=True, ZIP_TILE_SIZE=8 ): 
         if(map.buffer_size < 128):
             map.buffer_size = 128
         im = mapnik.Image( image_size, image_size)
-        mapnik.render(map, im)
+        try:
+            mapnik.render(map, im)
+        except:
+            print("Error rendering tile", task)
+            queue.put( task) # put tile back in the queue
+            continue
         
         if slice_to_zip:
             # Slice image in tiles        
@@ -201,7 +206,7 @@ def render_tilezips( geojson_file, zooms, block_size):
         segments_xy = [ ((int(x1/image_size),int(y1/image_size)),(int(x2/image_size),int(y2/image_size))) for ((x1,y1),(x2,y2)) in segments_px ]
         two_pot_z = 2**zoom
         zoom_corrected = "%s" % (zoom + zoom_correction)
-        folder = TILE_DIR + ("%s/" % zoom_corrected)
+        folder = TILES_DIR + ("%s/" % zoom_corrected)
         if not os.path.isdir(folder):
             os.mkdir(folder)
         tiles_to_render = scan_lines_segments( segments_xy )
@@ -217,7 +222,6 @@ def render_tilezips( geojson_file, zooms, block_size):
 
  
 def render_geojson( file, block_size, zooms):
-    NUM_WORKERS = 8
     workers = []
     for i in range(NUM_WORKERS):
         p = multiprocessing.Process(target=worker, args=( queue, TILE_SIZE, block_size, False))  # last param: slice_to_zip
@@ -239,9 +243,10 @@ def render_geojson( file, block_size, zooms):
 #     with open('/scripts/logs-insights-results-7.csv') as csv_file:
 #         csv_reader = csv.DictReader(csv_file)
 #         for row in csv_reader:
-#             zips_visited.append( "%s%s/%s/%s/%s.zip" % ( TILE_DIR, row['z'],row['x'],row['y'],row['zip']) )
+#             zips_visited.append( "%s%s/%s/%s/%s.zip" % ( TILES_DIR, row['z'],row['x'],row['y'],row['zip']) )
 #     print( "zips_visited", zips_visited)
 
+NUM_WORKERS = 5
 TILE_SIZE = 256
 MAX_ZOOM = 17
 ll_bounds = (1.96, 41.58, 2.06, 41.68)
@@ -252,8 +257,8 @@ queue = multiprocessing.Queue()
 # zips_visited = []
 
 if __name__ == '__main__':
+    # geojson_piricat = "/mnt/conf/tot.geojson"
     geojson_piricat = "/mnt/conf/test.geojson"
-    # geojson_piricat = "/mnt/conf/temp2.geojson"
     geojson_picos = "/mnt/conf/picos_render.geojson"
     
     # read_zips_visited()

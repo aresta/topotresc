@@ -12,12 +12,12 @@
 docker-compose exec tools /scripts/create_shades_contours.sh
 
 # Import to the DB. This will take a while... well, like the other steps
-docker-compose exec  --env AREA=tot tools /scripts/import_pbf.sh
+docker-compose exec --env AREA=tot tools /scripts/import_pbf.sh
 # Import contours only if you changed the area of your map. Otherwise it's needed only the 1st time, as they would be already in the DB.
-docker-compose exec postgres /scripts/import_contours.sh
+docker-compose exec tools /scripts/import_contours.sh
 
 # compile the styles, only needed if you change them
-#docker-compose exec tools /scripts/compile_styles.sh
+# docker-compose exec tools /scripts/compile_styles.sh
 
 # here we go
 # ./start_web_server.sh
