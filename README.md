@@ -79,7 +79,6 @@ Open a second terminal, navigate to the project folder fix the permissions and e
 chmod +x tools/scripts/*.sh tools/scripts/*.py
 docker-compose exec tools /scripts/download_shapefiles.sh
 docker-compose exec tools /scripts/import_test_data.sh
-docker-compose exec tools /scripts/render_tilezip.py
 ```
 when the data is loaded you can start the script that reders all the tiles:
 
