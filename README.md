@@ -74,9 +74,11 @@ Check posible errors.  If everything is fine later you can also execute the comm
 
 - ### Import the sample data to the PostgreSQL database.
 
-Open a second terminal, navigate to the project folder and execute the script:
+Open a second terminal, navigate to the project folder fix the permissions and execute the scripts:
 ```
-import_test_data.sh
+chmod +x tools/scripts/*.sh tools/scripts/*.py
+docker-compose exec tools /scripts/import_test_data.sh
+docker-compose exec tools /scripts/render_tilezip.py
 ```
 when the data is loaded you can start the script that reders all the tiles:
 

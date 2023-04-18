@@ -19,6 +19,3 @@ osm2pgsql  -H postgres \
 
 echo 'Importing contours data'
 gunzip /mnt/contours/contours_test.sql.gz -c | psql -h postgres -U render -d renderdb
-
-cd /scripts
-./render_tilezip.py

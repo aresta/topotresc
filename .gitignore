@@ -1,9 +1,12 @@
 mnt/base_data
 postgres/data
 mnt/contours/*
-!mnt/contours/contours_test.sql.gz
 mnt/dem
 mnt/pbf/*
-!mnt/pbf/test.pbf
 mnt/shades/*
 tiles/
+!mnt/pbf/test.pbf
+!mnt/contours/contours_test.sql.gz
+!mnt/shades/shades_test.tif
+!mnt/shades/shades_merged.vrt
+!mnt/shades/color_relief_test.tif
