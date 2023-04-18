@@ -112,9 +112,9 @@ docker-compose exec tools /scripts/compile_styles.sh
 ### DEM (digital elevation model) files. 
 To create a map of your preferred area you will need to download the OSM and DEM data of that zone.
 
-**OSM data:** you can download it from several server. Check the script create_pbf.sh as an example about getting and cropping the OSM data. 
+**OSM data:** you can download it from several places. Check the script create_pbf.sh as an example about getting and cropping the OSM data. 
 
-**DEM data:** (Digital Elevation Model) is needed to create the contour lines and hillshading.  For the Picos area (or any other in Spain) you can download them here: http://centrodedescargas.cnig.es/CentroDescargas/index.jsp (MDT05 is ok, 5x5m). Put them in the folder mnt/dem/es/  
+**DEM data:** (Digital Elevation Model) is needed to create the contour lines and hillshading.  For areas in Spain you can download them here: http://centrodedescargas.cnig.es/CentroDescargas/index.jsp (MDT05 is ok, 5x5m). Put them in the folder mnt/dem/es/  
 For example, for the Picos area the files are:
 ```
 PNOA_MDT05_ETRS89_HU30_0031_LID.asc
@@ -124,6 +124,7 @@ PNOA_MDT05_ETRS89_HU30_0056_LID.asc
 PNOA_MDT05_ETRS89_HU30_0080_LID.asc
 PNOA_MDT05_ETRS89_HU30_0081_LID.asc
 ```
+The scripts create_shades.sh and create_contours.sh describes or automatize the processes.
 
 ## Examples
 
