@@ -99,7 +99,9 @@ http://127.0.0.1:5000
 This is a very simple web and tile server based in Python and Flask. This is only intended for testing and the performance is very poor, but it works. 
 
 ## Customize the map to another area
-To create a map of your preferred area you will need first to define the map area in a geojson file in the /mnt/conf folder. There are some example there.  Then you have to download all the needed OSM and elevation data, see below.
+To create a map of your preferred area you will need first to define the map area in a geojson file in the /mnt/conf folder. There are some example there.  
+
+Then you have to download all the needed OSM and elevation data, see below.
 You can check the rest of scripts to find how to download and build the needed data.
 
 If you want to adapt the styles (good luck) they are in mnt/openstreetmap-carto. You can compile them with:
@@ -107,9 +109,12 @@ If you want to adapt the styles (good luck) they are in mnt/openstreetmap-carto.
 docker-compose exec tools /scripts/compile_styles.sh
 ```
 
-### DEM (digital elevation model) files of the map area. 
+### DEM (digital elevation model) files. 
 To create a map of your preferred area you will need to download the OSM and DEM data of that zone.
-DEM data (Digital Elevation Model) is needed to create the contour lines and hillshading.  For the Picos area (or any other in Spain) you can download them here: http://centrodedescargas.cnig.es/CentroDescargas/index.jsp (MDT05 is ok, 5x5m). Put them in the folder mnt/dem/es/  
+
+**OSM data:** you can download it from several server. Check the script create_pbf.sh as an example about getting and cropping the OSM data. 
+
+**DEM data:** (Digital Elevation Model) is needed to create the contour lines and hillshading.  For the Picos area (or any other in Spain) you can download them here: http://centrodedescargas.cnig.es/CentroDescargas/index.jsp (MDT05 is ok, 5x5m). Put them in the folder mnt/dem/es/  
 For example, for the Picos area the files are:
 ```
 PNOA_MDT05_ETRS89_HU30_0031_LID.asc
