@@ -5,6 +5,7 @@ mnt/dem
 mnt/pbf/*
 mnt/shades/*
 tiles/
+EC2_server_setup.md
 !mnt/pbf/test.pbf
 !mnt/contours/contours_test.sql.gz
 !mnt/shades/shades_test.tif
