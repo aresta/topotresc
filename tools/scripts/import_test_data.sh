@@ -17,5 +17,10 @@ osm2pgsql  -H postgres \
   /mnt/pbf/test.pbf
 
 
+# Import coast lines. Filtered to Spain area only
+echo 'Importing coast lines'
+gunzip /mnt/base_data/simplified_water_polygons.sql.gz -c | psql -h postgres -U render -d renderdb
+gunzip /mnt/base_data/water_polygons.sql.gz -c | psql -h postgres -U render -d renderdb
+
 echo 'Importing contours data'
 gunzip /mnt/contours/contours_test.sql.gz -c | psql -h postgres -U render -d renderdb

@@ -334,8 +334,12 @@ Layer:
     class: ocean
     <<: *extents
     Datasource:
-      file: /mnt/base_data/simplified-water-polygons-split-3857/simplified_water_polygons.shp
-      type: shape
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM simplified_water_polygons
+        ) AS ocean_lz
     properties:
       maxzoom: 9
   - id: ocean
@@ -343,8 +347,12 @@ Layer:
     class: ocean
     <<: *extents
     Datasource:
-      file: /mnt/base_data/water-polygons-split-3857/water_polygons.shp
-      type: shape
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM water_polygons
+        ) AS ocean
     properties:
       minzoom: 10
   - id: landcover-area-symbols
@@ -1208,15 +1216,19 @@ Layer:
         ) AS routes_shields
     properties:
       minzoom: 9
-  - id: necountries
-    geometry: linestring
-    <<: *extents84
-    Datasource:
-      file: /mnt/base_data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
-      type: shape
-    properties:
-      minzoom: 1
-      maxzoom: 3
+  # - id: necountries
+  #   geometry: linestring
+  #   <<: *extents
+  #   Datasource:
+  #     <<: *osm2pgsql
+  #     table: |-
+  #       (SELECT
+  #           way
+  #         FROM ne_110m_admin_0_boundary_lines_land
+  #       ) AS necountries
+  #   properties:
+  #     minzoom: 1
+  #     maxzoom: 3
   - id: admin-low-zoom
     geometry: linestring
     <<: *extents

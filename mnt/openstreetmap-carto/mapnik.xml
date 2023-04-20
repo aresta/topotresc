@@ -5995,8 +5995,18 @@
   <Layer minimum-scale-denominator="750000" name="ocean-lz" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName><![CDATA[ocean-lz]]></StyleName>
     <Datasource>
-      <Parameter name="file"><![CDATA[/mnt/base_data/simplified-water-polygons-split-3857/simplified_water_polygons.shp]]></Parameter>
-      <Parameter name="type"><![CDATA[shape]]></Parameter>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="dbname"><![CDATA[renderdb]]></Parameter>
+      <Parameter name="host"><![CDATA[postgres]]></Parameter>
+      <Parameter name="user"><![CDATA[render]]></Parameter>
+      <Parameter name="password"><![CDATA[render]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
+      <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
+      <Parameter name="table"><![CDATA[(SELECT
+    way
+  FROM simplified_water_polygons
+) AS ocean_lz]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="ocean">
@@ -6007,8 +6017,18 @@
   <Layer maximum-scale-denominator="750000" name="ocean" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName><![CDATA[ocean]]></StyleName>
     <Datasource>
-      <Parameter name="file"><![CDATA[/mnt/base_data/water-polygons-split-3857/water_polygons.shp]]></Parameter>
-      <Parameter name="type"><![CDATA[shape]]></Parameter>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="dbname"><![CDATA[renderdb]]></Parameter>
+      <Parameter name="host"><![CDATA[postgres]]></Parameter>
+      <Parameter name="user"><![CDATA[render]]></Parameter>
+      <Parameter name="password"><![CDATA[render]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
+      <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
+      <Parameter name="table"><![CDATA[(SELECT
+    way
+  FROM water_polygons
+) AS ocean]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="landcover-area-symbols-wood">
@@ -27898,30 +27918,6 @@ AS entrances]]></Parameter>
   AND ref != 'GR11'  -- duplicated route relation!
   AND network in ('iwn', 'nwn', 'rwn', 'lwn','icn', 'ncn', 'rcn', 'lcn')
 ) AS routes_shields]]></Parameter>
-    </Datasource>
-  </Layer>
-  <Style filter-mode="first" name="necountries">
-    <Rule>
-      <MaxScaleDenominator>100000000</MaxScaleDenominator>
-      <MinScaleDenominator>50000000</MinScaleDenominator>
-      <LineSymbolizer stroke="#ac46ac" stroke-width="0.4" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>200000000</MaxScaleDenominator>
-      <MinScaleDenominator>100000000</MinScaleDenominator>
-      <LineSymbolizer stroke="#ac46ac" stroke-width="0.3" />
-    </Rule>
-    <Rule>
-      <MaxScaleDenominator>500000000</MaxScaleDenominator>
-      <MinScaleDenominator>200000000</MinScaleDenominator>
-      <LineSymbolizer stroke="#ac46ac" stroke-width="0.2" />
-    </Rule>
-  </Style>
-  <Layer maximum-scale-denominator="500000000" minimum-scale-denominator="50000000" name="necountries" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
-    <StyleName><![CDATA[necountries]]></StyleName>
-    <Datasource>
-      <Parameter name="file"><![CDATA[/mnt/base_data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp]]></Parameter>
-      <Parameter name="type"><![CDATA[shape]]></Parameter>
     </Datasource>
   </Layer>
   <Style comp-op="darken" filter-mode="first" name="admin-low-zoom" opacity="0.4">

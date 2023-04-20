@@ -15,3 +15,8 @@ osm2pgsql  -H postgres \
   --number-processes 12 \
   -S /mnt/openstreetmap-carto/openstreetmap-carto.style \
   /mnt/pbf/$AREA.pbf
+
+
+# Import coast lines. Filtered to Spain area only.
+gunzip /mnt/base_data/simplified_water_polygons.sql.gz -c | psql -h postgres -U render -d renderdb
+gunzip /mnt/base_data/water_polygons.sql.gz -c | psql -h postgres -U render -d renderdb
