@@ -77,7 +77,6 @@ Check posible errors.  If everything is fine later you can also execute the comm
 Open a second terminal, navigate to the project folder fix the permissions and execute the scripts:
 ```
 chmod +x tools/scripts/*.sh tools/scripts/*.py
-docker-compose exec tools /scripts/download_shapefiles.sh
 docker-compose exec tools /scripts/import_test_data.sh
 ```
 when the data is loaded you can start the script that reders all the tiles:
