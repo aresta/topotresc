@@ -1,9 +1,9 @@
 from flask import Flask, render_template, escape, url_for, send_file, send_from_directory, redirect
 from PIL import Image
-import struct
 from io import BytesIO
-import base64
+import random
 import os
+import threading
 
 MAX_ZOOM = 17
 TILE_SIZE = 256
@@ -19,6 +19,8 @@ prefix = "topotresc"
 api = "api"
 
 img_cache = {}
+img_cache_size = 30
+lock = threading.Semaphore()
 app = Flask(__name__)
 
 @app.route('/')
@@ -43,27 +45,30 @@ def get_tile( x, y, z):
     file_x = (x & block_mask)
     file_y = (y & block_mask)
     file_path = f"{z}/{folder_x}/{folder_y}/{file_x}_{file_y}.png"
-    # print("file_path", file_path)
+
+    lock.acquire() # per evitar que varis requests en paralel vagin al disc a per la mateixa imatge
     if file_path in img_cache:
-        # print(" ****CACHE*** ", TILES_FOLDER + file_path)
+        lock.release()
         img = img_cache[file_path]
     else:
         if os.path.isfile( TILES_FOLDER + file_path):
-            # print(" ****FILE*** ", TILES_FOLDER + file_path)
+            print(" + loading from disk", file_path)
             img = Image.open( TILES_FOLDER + file_path)
+            while len( img_cache) >= img_cache_size:
+                print(" *** Cache full")
+                to_remove = random.choice( list( img_cache.keys() ))
+                del img_cache[ to_remove ]
             img_cache[file_path] = img.copy()
-        else: return ""
+            lock.release()
+        else: 
+            lock.release()
+            return None
     tile = img.crop((
-        (x - file_x)*TILE_SIZE,
-        (y - file_y)*TILE_SIZE,
-        (x - file_x + 1)*TILE_SIZE,
-        (y - file_y + 1)*TILE_SIZE ))
+        (x - file_x) * TILE_SIZE,
+        (y - file_y) * TILE_SIZE,
+        (x - file_x + 1) * TILE_SIZE,
+        (y - file_y + 1) * TILE_SIZE ))
     buf = BytesIO()
     tile.save( buf, format='PNG')
     buf.seek(0)
     return send_file( buf, mimetype='image/png')
-
-
-
-
-    
