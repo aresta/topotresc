@@ -62,7 +62,7 @@ def get_tile( x, y, z):
             lock.release()
         else: 
             lock.release()
-            return None
+            return ""
     tile = img.crop((
         (x - file_x) * TILE_SIZE,
         (y - file_y) * TILE_SIZE,

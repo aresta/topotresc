@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "leaflet": "^1.6.0",
+    "leaflet": "^1.9.3",
     "leaflet-filelayer": "^1.2.0",
     "togeojson": "^0.16.0"
   },
