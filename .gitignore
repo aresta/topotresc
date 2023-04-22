@@ -1,4 +1,3 @@
-mnt/base_data
 postgres/data
 mnt/contours/*
 mnt/dem

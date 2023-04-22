@@ -20,7 +20,7 @@ docker-compose exec tools /scripts/import_contours.sh
 # docker-compose exec tools /scripts/compile_styles.sh
 
 # here we go
-# ./start_web_server.sh
+docker-compose exec tools /scripts/start_web_server.sh
 
 # point your browser to http://localhost
 

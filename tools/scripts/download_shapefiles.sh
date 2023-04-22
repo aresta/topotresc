@@ -18,6 +18,7 @@ rm -f *.zip
 # [ -d ne_110m_admin_0_boundary_lines_land ] || mkdir -p ne_110m_admin_0_boundary_lines_land
 # mv ne_110m_admin_0_boundary_lines_land.* ne_110m_admin_0_boundary_lines_land
 
+
 # extract the coast lines to sql to be imported, filtered to the Spain area: x >= -4 and x <= 1 and y >= 13 and y <= 17
 ogr2ogr \
     -f PGDump \

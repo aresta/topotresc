@@ -45,7 +45,7 @@ cd /scripts
 ./render_tilezip.py
 
 # here we go
-# start flask server
+docker-compose exec tools /scripts/start_web_server.sh
 
 # point your browser to http://127.0.0.1:5000/
 
