@@ -129,7 +129,7 @@ The scripts create_shades.sh and create_contours.sh describes or automatize the 
 
 ## Examples
 
-Visit the Pyrenees and Catalonia Topotresc map: [Mapa del Pirineo](https://topotresc.com "Mapa dels Pirineus i Catalunya")
+Visit the Pyrenees and Catalonia Topotresc map: [Mapa del Pirineo](https://www.topotresc.com/?42.6565&-0.0015&14 "Mapa dels Pirineus i Catalunya")
 
 (OSM data update updated every couple of months)
 
